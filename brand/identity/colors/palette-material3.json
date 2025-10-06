@@ -1,0 +1,128 @@
+{
+  "source": {
+    "primary": "#E53935",
+    "description": "Cor principal da marca Oficina Digital - Vermelho característico"
+  },
+  "schemes": {
+    "light": {
+      "primary": "#E53935",
+      "onPrimary": "#FFFFFF",
+      "primaryContainer": "#FFEBEE",
+      "onPrimaryContainer": "#C62828",
+      
+      "secondary": "#424242",
+      "onSecondary": "#FFFFFF",
+      "secondaryContainer": "#F5F5F5",
+      "onSecondaryContainer": "#121212",
+      
+      "tertiary": "#2196F3",
+      "onTertiary": "#FFFFFF",
+      "tertiaryContainer": "#E3F2FD",
+      "onTertiaryContainer": "#0D47A1",
+      
+      "error": "#F44336",
+      "onError": "#FFFFFF",
+      "errorContainer": "#FFEBEE",
+      "onErrorContainer": "#C62828",
+      
+      "background": "#FFFFFF",
+      "onBackground": "#121212",
+      "surface": "#F5F5F5",
+      "onSurface": "#121212",
+      "surfaceVariant": "#E0E0E0",
+      "onSurfaceVariant": "#424242",
+      "surfaceTint": "#E53935",
+      
+      "outline": "#9E9E9E",
+      "outlineVariant": "#E0E0E0",
+      "shadow": "#000000",
+      "scrim": "#000000",
+      "inverseSurface": "#121212",
+      "inverseOnSurface": "#FFFFFF",
+      "inversePrimary": "#FFCDD2"
+    },
+    "dark": {
+      "primary": "#FFCDD2",
+      "onPrimary": "#C62828",
+      "primaryContainer": "#B71C1C",
+      "onPrimaryContainer": "#FFEBEE",
+      
+      "secondary": "#BDBDBD",
+      "onSecondary": "#121212",
+      "secondaryContainer": "#424242",
+      "onSecondaryContainer": "#F5F5F5",
+      
+      "tertiary": "#90CAF9",
+      "onTertiary": "#0D47A1",
+      "tertiaryContainer": "#1976D2",
+      "onTertiaryContainer": "#E3F2FD",
+      
+      "error": "#FFCDD2",
+      "onError": "#C62828",
+      "errorContainer": "#B71C1C",
+      "onErrorContainer": "#FFEBEE",
+      
+      "background": "#121212",
+      "onBackground": "#FFFFFF",
+      "surface": "#1E1E1E",
+      "onSurface": "#FFFFFF",
+      "surfaceVariant": "#424242",
+      "onSurfaceVariant": "#BDBDBD",
+      "surfaceTint": "#FFCDD2",
+      
+      "outline": "#757575",
+      "outlineVariant": "#424242",
+      "shadow": "#000000",
+      "scrim": "#000000",
+      "inverseSurface": "#F5F5F5",
+      "inverseOnSurface": "#121212",
+      "inversePrimary": "#E53935"
+    }
+  },
+  "semantic": {
+    "success": {
+      "hex": "#4CAF50",
+      "usage": "Indicadores de sucesso, confirmações, agendamentos concluídos"
+    },
+    "warning": {
+      "hex": "#FF9800",
+      "usage": "Alertas, avisos importantes, serviços em andamento"
+    },
+    "info": {
+      "hex": "#2196F3",
+      "usage": "Informações, links, agendamentos pendentes"
+    }
+  },
+  "states": {
+    "hover": {
+      "primary": "#C62828",
+      "secondary": "#616161"
+    },
+    "pressed": {
+      "primary": "#B71C1C",
+      "secondary": "#424242"
+    },
+    "focused": {
+      "primary": "#E53935",
+      "secondary": "#424242"
+    },
+    "disabled": {
+      "primary": "#E0E0E0",
+      "onDisabled": "#9E9E9E"
+    }
+  },
+  "usage": {
+    "primary": "Botões principais, CTAs, navegação ativa, ícones de ação",
+    "primaryContainer": "Fundos de componentes primários, cards destacados",
+    "secondary": "Texto secundário, ícones utilitários, elementos de apoio",
+    "surface": "Cards, modais, superfícies elevadas, fundos de formulários",
+    "outline": "Bordas, divisores, contornos de campos",
+    "background": "Fundo principal da aplicação"
+  },
+  "brand_mapping": {
+    "oficina_red": "primary",
+    "oficina_black": "onSurface",
+    "oficina_light_gray": "surface",
+    "oficina_medium_gray": "outline"
+  }
+}

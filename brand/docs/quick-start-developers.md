@@ -33,7 +33,7 @@
  * Component: AppointmentCard
  * Context: Display appointment for shop dashboard  
  * Users: Mechanics (low-tech familiarity)
- * @see .ai/context.md
+ * @see .github/copilot-instructions.md
  */
 import './AppointmentCard.css';
 

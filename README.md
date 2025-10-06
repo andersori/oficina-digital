@@ -98,18 +98,26 @@ Avaliar Serviço (futuro)
 ## 🏗️ Arquitetura
 
 ```
-Frontend (React + TypeScript)
+Frontend (React + TypeScript + Material 3)
     ↕
 Backend (Kotlin + Spring Boot)
     ↕
 Database (PostgreSQL)
 ```
 
+### Stack Tecnológico
+- **Frontend**: React 18 + TypeScript + Material Design 3
+- **UI Components**: Material UI (@mui/material) com tema customizado
+- **Backend**: Kotlin + Spring Boot + JPA/Hibernate
+- **Database**: PostgreSQL
+- **Infrastructure**: Docker + AWS
+
 ## 🎨 Design System
 
-- **Cores principais**: Vermelho (#E53935) + Preto (#121212)
-- **Tipografia**: Poppins (títulos) + Inter (textos)
-- **Abordagem**: Mobile-first, botões grandes, alto contraste
+- **Framework**: Material Design 3 (Material You) com customização da marca
+- **Cores**: Vermelho (#E53935) + Preto (#121212) mapeados para tokens Material 3
+- **Tipografia**: Poppins (títulos) + Inter (textos) integrados à escala Material 3
+- **Acessibilidade**: WCAG AA built-in, touch targets 48px, contraste garantido
 
 ## 🚀 Como Executar
 
