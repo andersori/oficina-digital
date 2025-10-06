@@ -1,0 +1,78 @@
+{
+  "primary": {
+    "red": {
+      "hex": "#E53935",
+      "rgb": "rgb(229, 57, 53)",
+      "hsl": "hsl(2, 78%, 55%)",
+      "usage": "Botões, ícones de ação, destaques"
+    }
+  },
+  "neutral": {
+    "black": {
+      "hex": "#121212",
+      "rgb": "rgb(18, 18, 18)",
+      "hsl": "hsl(0, 0%, 7%)",
+      "usage": "Fundo principal, textos em destaque"
+    },
+    "lightGray": {
+      "hex": "#F5F5F5",
+      "rgb": "rgb(245, 245, 245)",
+      "hsl": "hsl(0, 0%, 96%)",
+      "usage": "Fundo de seções, áreas neutras"
+    },
+    "mediumGray": {
+      "hex": "#9E9E9E",
+      "rgb": "rgb(158, 158, 158)",
+      "hsl": "hsl(0, 0%, 62%)",
+      "usage": "Textos secundários, bordas sutis"
+    }
+  },
+  "semantic": {
+    "success": {
+      "hex": "#4CAF50",
+      "rgb": "rgb(76, 175, 80)",
+      "hsl": "hsl(122, 39%, 49%)",
+      "usage": "Indicadores de sucesso, confirmações"
+    },
+    "warning": {
+      "hex": "#FF9800",
+      "rgb": "rgb(255, 152, 0)",
+      "hsl": "hsl(36, 100%, 50%)",
+      "usage": "Alertas, avisos importantes"
+    },
+    "error": {
+      "hex": "#F44336",
+      "rgb": "rgb(244, 67, 54)",
+      "hsl": "hsl(4, 90%, 58%)",
+      "usage": "Erros, ações destrutivas"
+    },
+    "info": {
+      "hex": "#2196F3",
+      "rgb": "rgb(33, 150, 243)",
+      "hsl": "hsl(207, 90%, 54%)",
+      "usage": "Informações, links"
+    }
+  },
+  "variants": {
+    "redLight": {
+      "hex": "#FFEBEE",
+      "rgb": "rgb(255, 235, 238)",
+      "usage": "Fundos sutis para elementos vermelhos"
+    },
+    "redDark": {
+      "hex": "#C62828",
+      "rgb": "rgb(198, 40, 40)",
+      "usage": "Estados hover/active para elementos vermelhos"
+    },
+    "grayDark": {
+      "hex": "#424242",
+      "rgb": "rgb(66, 66, 66)",
+      "usage": "Texto sobre fundos claros"
+    },
+    "white": {
+      "hex": "#FFFFFF",
+      "rgb": "rgb(255, 255, 255)",
+      "usage": "Texto sobre fundos escuros, cards"
+    }
+  }
+}
