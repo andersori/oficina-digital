@@ -74,7 +74,7 @@ const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 ```typescript
 // Use theme colors mapped to brand
 sx={{
-  backgroundColor: 'primary.main', // --color-primary-red
+  backgroundColor: 'primary.main',
   color: 'primary.contrastText',
   '&:hover': {
     backgroundColor: 'primary.dark'
