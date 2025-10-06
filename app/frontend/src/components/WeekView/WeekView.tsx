@@ -2,7 +2,7 @@
  * Component: WeekView
  * Context: Weekly calendar view showing appointments across 7 days
  * Users: Mechanics (low-tech familiarity)
- * @see .ai/context.md
+ * @see .github/copilot-instructions.md
  */
 
 import type { Appointment } from '../../types';

@@ -2,7 +2,7 @@
  * Component: FilterSidebar
  * Context: Sidebar with filters for appointment dashboard
  * Users: Mechanics (low-tech familiarity)
- * @see .ai/context.md
+ * @see .github/copilot-instructions.md
  */
 
 import type { AppointmentStatus, Filters } from '../../types';

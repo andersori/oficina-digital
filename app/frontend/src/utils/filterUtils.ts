@@ -1,7 +1,7 @@
 /**
  * Filter utility functions for Oficina Digital Dashboard
  * Context: Helper functions for filtering appointments
- * @see .ai/context.md
+ * @see .github/copilot-instructions.md
  */
 
 import type { Appointment, Filters } from '../types';

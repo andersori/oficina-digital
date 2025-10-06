@@ -1,7 +1,7 @@
 /**
  * Types for Oficina Digital Dashboard
  * Context: Type definitions for appointments, filters, and user data
- * @see .ai/context.md
+ * @see .github/copilot-instructions.md
  */
 
 export type AppointmentStatus = 

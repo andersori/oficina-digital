@@ -1,7 +1,7 @@
 /**
  * Mock data for Oficina Digital Dashboard
  * Context: Sample appointments and user data for testing
- * @see .ai/context.md
+ * @see .github/copilot-instructions.md
  */
 
 import type { Appointment, ShopOwner, Branch } from '../types';

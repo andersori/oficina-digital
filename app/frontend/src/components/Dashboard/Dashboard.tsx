@@ -2,7 +2,7 @@
  * Component: Dashboard
  * Context: Main dashboard for shop owner to view and manage appointments
  * Users: Mechanics (low-tech familiarity)
- * @see .ai/context.md
+ * @see .github/copilot-instructions.md
  */
 
 import { useState } from 'react';

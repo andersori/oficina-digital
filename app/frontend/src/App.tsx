@@ -1,7 +1,7 @@
 /**
  * Main App Component for Oficina Digital
  * Context: Entry point for the dashboard application
- * @see .ai/context.md
+ * @see .github/copilot-instructions.md
  */
 
 import { Dashboard } from './components/Dashboard/Dashboard';

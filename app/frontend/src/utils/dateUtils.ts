@@ -1,7 +1,7 @@
 /**
  * Date utility functions for Oficina Digital Dashboard
  * Context: Helper functions for calendar and scheduling operations
- * @see .ai/context.md
+ * @see .github/copilot-instructions.md
  */
 
 export const formatDate = (date: Date): string => {

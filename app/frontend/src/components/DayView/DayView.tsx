@@ -2,7 +2,7 @@
  * Component: DayView
  * Context: Daily schedule view showing appointments for a single day
  * Users: Mechanics (low-tech familiarity)
- * @see .ai/context.md
+ * @see .github/copilot-instructions.md
  */
 
 import type { Appointment } from '../../types';
