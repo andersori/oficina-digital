@@ -1,4 +1,4 @@
-/* WeekView.css */
+/* WeekView.css - Dark Mode */
 
 .week-view {
   width: 100%;
@@ -11,8 +11,8 @@
 }
 
 .week-day-card {
-  background-color: var(--color-neutral-white);
-  border: 2px solid var(--color-neutral-gray-light);
+  background-color: #2a2a2a;
+  border: 2px solid #3a3a3a;
   border-radius: var(--border-radius-md);
   padding: var(--spacing-md);
   min-height: 200px;
@@ -24,13 +24,14 @@
 
 .week-day-card:hover {
   border-color: var(--color-primary-red);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   transform: translateY(-2px);
 }
 
 .week-day-card.today {
   border-color: var(--color-primary-red);
   border-width: 3px;
+  background-color: #3a2a2a;
 }
 
 .week-day-header {
@@ -39,14 +40,14 @@
   align-items: center;
   margin-bottom: var(--spacing-md);
   padding-bottom: var(--spacing-sm);
-  border-bottom: 1px solid var(--color-neutral-gray-light);
+  border-bottom: 1px solid #3a3a3a;
 }
 
 .week-day-name {
   font-family: var(--font-body);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: var(--color-neutral-gray-medium);
+  color: #999;
   text-transform: uppercase;
 }
 
@@ -54,7 +55,7 @@
   font-family: var(--font-heading);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
-  color: var(--color-neutral-black);
+  color: #ccc;
   width: 36px;
   height: 36px;
   display: flex;
@@ -79,7 +80,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-neutral-gray-medium);
+  color: #666;
   font-family: var(--font-body);
   font-size: var(--font-size-sm);
   font-style: italic;
@@ -107,13 +108,13 @@
   display: flex;
   gap: var(--spacing-sm);
   padding: var(--spacing-sm);
-  background-color: var(--color-neutral-gray-light);
+  background-color: #1a1a1a;
   border-radius: var(--border-radius-sm);
   transition: background-color var(--transition-fast);
 }
 
 .week-appointment-item:hover {
-  background-color: var(--color-neutral-gray-medium);
+  background-color: #3a3a3a;
 }
 
 .week-appointment-indicator {
@@ -131,7 +132,7 @@
   font-family: var(--font-body);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
-  color: var(--color-neutral-black);
+  color: #ccc;
   margin: 0 0 var(--spacing-xs) 0;
 }
 
@@ -139,7 +140,7 @@
   font-family: var(--font-body);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: var(--color-neutral-black);
+  color: #fff;
   margin: 0 0 var(--spacing-xs) 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -149,7 +150,7 @@
 .week-appointment-customer {
   font-family: var(--font-body);
   font-size: var(--font-size-xs);
-  color: var(--color-neutral-gray-dark);
+  color: #999;
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;

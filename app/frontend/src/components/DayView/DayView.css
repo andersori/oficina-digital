@@ -1,23 +1,23 @@
-/* DayView.css */
+/* DayView.css - Dark Mode */
 
 .day-view {
-  background-color: var(--color-neutral-white);
+  background-color: #2a2a2a;
   border-radius: var(--border-radius-md);
   padding: var(--spacing-lg);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .day-view-header {
   margin-bottom: var(--spacing-xl);
   padding-bottom: var(--spacing-lg);
-  border-bottom: 2px solid var(--color-neutral-gray-light);
+  border-bottom: 2px solid #3a3a3a;
 }
 
 .day-view-title {
   font-family: var(--font-heading);
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
-  color: var(--color-neutral-black);
+  color: #fff;
   margin-bottom: var(--spacing-sm);
   text-transform: capitalize;
 }
@@ -25,13 +25,13 @@
 .day-view-count {
   font-family: var(--font-body);
   font-size: var(--font-size-base);
-  color: var(--color-neutral-gray-medium);
+  color: #999;
 }
 
 .day-view-empty-subtitle {
   font-family: var(--font-body);
   font-size: var(--font-size-base);
-  color: var(--color-neutral-gray-medium);
+  color: #666;
   font-style: italic;
 }
 
@@ -52,7 +52,7 @@
   font-family: var(--font-body);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
-  color: var(--color-neutral-gray-medium);
+  color: #999;
   padding-top: var(--spacing-sm);
 }
 
@@ -65,10 +65,10 @@
   align-items: center;
   justify-content: center;
   min-height: 60px;
-  background-color: var(--color-neutral-gray-light);
-  border: 1px dashed var(--color-neutral-gray-medium);
+  background-color: #1a1a1a;
+  border: 1px dashed #3a3a3a;
   border-radius: var(--border-radius-md);
-  color: var(--color-neutral-gray-medium);
+  color: #666;
   font-family: var(--font-body);
   font-size: var(--font-size-sm);
 }
@@ -76,15 +76,15 @@
 .day-view-appointment {
   display: flex;
   gap: var(--spacing-md);
-  background-color: var(--color-neutral-white);
-  border: 1px solid var(--color-neutral-gray-light);
+  background-color: #3a3a3a;
+  border: 1px solid #4a4a4a;
   border-radius: var(--border-radius-md);
   padding: var(--spacing-md);
   transition: box-shadow var(--transition-fast);
 }
 
 .day-view-appointment:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .appointment-status-indicator {
@@ -109,7 +109,7 @@
   font-family: var(--font-heading);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-neutral-black);
+  color: #fff;
   margin: 0;
 }
 
@@ -128,7 +128,7 @@
 .appointment-notes {
   font-family: var(--font-body);
   font-size: var(--font-size-sm);
-  color: var(--color-neutral-gray-dark);
+  color: #ccc;
   margin: var(--spacing-xs) 0;
 }
 
@@ -136,14 +136,14 @@
 .appointment-vehicle strong,
 .appointment-time strong,
 .appointment-notes strong {
-  color: var(--color-neutral-black);
+  color: #fff;
   font-weight: var(--font-weight-medium);
 }
 
 .appointment-notes {
   margin-top: var(--spacing-sm);
   padding-top: var(--spacing-sm);
-  border-top: 1px solid var(--color-neutral-gray-light);
+  border-top: 1px solid #3a3a3a;
   font-style: italic;
 }
 
