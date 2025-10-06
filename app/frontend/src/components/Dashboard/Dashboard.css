@@ -1,0 +1,285 @@
+/* Dashboard.css */
+
+.dashboard {
+  min-height: 100vh;
+  background-color: var(--color-neutral-gray-light);
+  padding: var(--spacing-lg);
+}
+
+/* Header */
+.dashboard-header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.dashboard-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  background-color: var(--color-neutral-black);
+  color: var(--color-neutral-white);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.dashboard-branding {
+  flex: 1;
+}
+
+.dashboard-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-white);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.dashboard-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  color: var(--color-neutral-gray-medium);
+  margin: 0;
+}
+
+.btn-filters {
+  background-color: var(--color-primary-red);
+  color: var(--color-neutral-white);
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border: none;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  min-height: 44px;
+  min-width: 120px;
+  transition: background-color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-filters:hover {
+  background-color: var(--color-primary-red-dark);
+}
+
+/* Controls */
+.dashboard-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  background-color: var(--color-neutral-white);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.view-toggle {
+  display: flex;
+  background-color: var(--color-neutral-gray-light);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-xs);
+  gap: var(--spacing-xs);
+}
+
+.view-toggle-btn {
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  background-color: transparent;
+  color: var(--color-neutral-gray-dark);
+  cursor: pointer;
+  min-height: 44px;
+  transition: all var(--transition-fast);
+}
+
+.view-toggle-btn.active {
+  background-color: var(--color-primary-red);
+  color: var(--color-neutral-white);
+}
+
+.view-toggle-btn:hover:not(.active) {
+  background-color: var(--color-neutral-gray-medium);
+  color: var(--color-neutral-black);
+}
+
+.date-navigation {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.nav-btn {
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-neutral-white);
+  color: var(--color-neutral-black);
+  border: 2px solid var(--color-neutral-gray-light);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  min-height: 44px;
+  transition: all var(--transition-fast);
+}
+
+.nav-btn:hover {
+  border-color: var(--color-primary-red);
+  color: var(--color-primary-red);
+}
+
+.date-display-wrapper {
+  position: relative;
+}
+
+.date-display {
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--color-neutral-white);
+  color: var(--color-neutral-black);
+  border: 2px solid var(--color-neutral-gray-medium);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  min-height: 44px;
+  min-width: 200px;
+  transition: all var(--transition-fast);
+}
+
+.date-display:hover {
+  border-color: var(--color-primary-red);
+}
+
+.date-picker-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: var(--spacing-xs);
+  background-color: var(--color-neutral-white);
+  border: 2px solid var(--color-neutral-gray-light);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-dropdown);
+}
+
+.date-picker-input {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  padding: var(--spacing-sm);
+  border: 2px solid var(--color-neutral-gray-light);
+  border-radius: var(--border-radius-sm);
+  min-height: 44px;
+  cursor: pointer;
+}
+
+.date-picker-input:focus {
+  outline: none;
+  border-color: var(--color-primary-red);
+}
+
+.btn-today {
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--color-primary-red);
+  color: var(--color-neutral-white);
+  border: none;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  min-height: 44px;
+  transition: background-color var(--transition-fast);
+}
+
+.btn-today:hover {
+  background-color: var(--color-primary-red-dark);
+}
+
+/* Content */
+.dashboard-content {
+  animation: fadeIn var(--transition-normal);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design - Mobile First */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: var(--spacing-sm);
+  }
+
+  .dashboard-header-top {
+    flex-direction: column;
+    padding: var(--spacing-md);
+  }
+
+  .dashboard-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .btn-filters {
+    width: 100%;
+  }
+
+  .dashboard-controls {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+  }
+
+  .view-toggle {
+    width: 100%;
+  }
+
+  .view-toggle-btn {
+    flex: 1;
+  }
+
+  .date-navigation {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-btn,
+  .btn-today {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-sm);
+  }
+
+  .date-display {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .date-picker-dropdown {
+    width: 100%;
+  }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .dashboard-controls {
+    flex-wrap: wrap;
+  }
+
+  .date-navigation {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,173 @@
+/* DayView.css */
+
+.day-view {
+  background-color: var(--color-neutral-white);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.day-view-header {
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 2px solid var(--color-neutral-gray-light);
+}
+
+.day-view-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-black);
+  margin-bottom: var(--spacing-sm);
+  text-transform: capitalize;
+}
+
+.day-view-count {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  color: var(--color-neutral-gray-medium);
+}
+
+.day-view-empty-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  color: var(--color-neutral-gray-medium);
+  font-style: italic;
+}
+
+.day-view-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.day-view-slot {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: var(--spacing-md);
+  min-height: 60px;
+}
+
+.day-view-time {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-gray-medium);
+  padding-top: var(--spacing-sm);
+}
+
+.day-view-slot-content {
+  min-height: 60px;
+}
+
+.day-view-slot-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+  background-color: var(--color-neutral-gray-light);
+  border: 1px dashed var(--color-neutral-gray-medium);
+  border-radius: var(--border-radius-md);
+  color: var(--color-neutral-gray-medium);
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+}
+
+.day-view-appointment {
+  display: flex;
+  gap: var(--spacing-md);
+  background-color: var(--color-neutral-white);
+  border: 1px solid var(--color-neutral-gray-light);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  transition: box-shadow var(--transition-fast);
+}
+
+.day-view-appointment:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.appointment-status-indicator {
+  width: 4px;
+  min-width: 4px;
+  border-radius: var(--border-radius-sm);
+}
+
+.appointment-info {
+  flex: 1;
+}
+
+.appointment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.appointment-service {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-black);
+  margin: 0;
+}
+
+.appointment-status-badge {
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+}
+
+.appointment-customer,
+.appointment-vehicle,
+.appointment-time,
+.appointment-notes {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-gray-dark);
+  margin: var(--spacing-xs) 0;
+}
+
+.appointment-customer strong,
+.appointment-vehicle strong,
+.appointment-time strong,
+.appointment-notes strong {
+  color: var(--color-neutral-black);
+  font-weight: var(--font-weight-medium);
+}
+
+.appointment-notes {
+  margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--color-neutral-gray-light);
+  font-style: italic;
+}
+
+/* Mobile First */
+@media (max-width: 768px) {
+  .day-view {
+    padding: var(--spacing-md);
+  }
+
+  .day-view-slot {
+    grid-template-columns: 60px 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .day-view-time {
+    font-size: var(--font-size-sm);
+  }
+
+  .appointment-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .appointment-status-badge {
+    align-self: flex-start;
+  }
+}

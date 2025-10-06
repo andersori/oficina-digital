@@ -1,0 +1,181 @@
+/* WeekView.css */
+
+.week-view {
+  width: 100%;
+}
+
+.week-view-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--spacing-md);
+}
+
+.week-day-card {
+  background-color: var(--color-neutral-white);
+  border: 2px solid var(--color-neutral-gray-light);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.week-day-card:hover {
+  border-color: var(--color-primary-red);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.week-day-card.today {
+  border-color: var(--color-primary-red);
+  border-width: 3px;
+}
+
+.week-day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-neutral-gray-light);
+}
+
+.week-day-name {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-gray-medium);
+  text-transform: uppercase;
+}
+
+.week-day-number {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-black);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.week-day-number.today {
+  background-color: var(--color-primary-red);
+  color: var(--color-neutral-white);
+}
+
+.week-day-appointments {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.week-day-empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-neutral-gray-medium);
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-style: italic;
+  text-align: center;
+  padding: var(--spacing-lg);
+}
+
+.week-day-count {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary-red);
+  margin-bottom: var(--spacing-sm);
+}
+
+.week-appointments-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+.week-appointment-item {
+  display: flex;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  background-color: var(--color-neutral-gray-light);
+  border-radius: var(--border-radius-sm);
+  transition: background-color var(--transition-fast);
+}
+
+.week-appointment-item:hover {
+  background-color: var(--color-neutral-gray-medium);
+}
+
+.week-appointment-indicator {
+  width: 3px;
+  min-width: 3px;
+  border-radius: var(--border-radius-sm);
+}
+
+.week-appointment-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.week-appointment-time {
+  font-family: var(--font-body);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-black);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.week-appointment-service {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-black);
+  margin: 0 0 var(--spacing-xs) 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.week-appointment-customer {
+  font-family: var(--font-body);
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-gray-dark);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Tablet - reduce to 4 columns */
+@media (max-width: 1024px) {
+  .week-view-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Mobile - single column */
+@media (max-width: 768px) {
+  .week-view-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .week-day-card {
+    min-height: auto;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .week-appointments-list {
+    max-height: none;
+  }
+}
