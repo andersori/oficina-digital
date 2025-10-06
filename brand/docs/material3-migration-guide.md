@@ -31,9 +31,16 @@
 - [x] `material3-integration.md` - Guia de componentes
 - [x] Atualização das instruções do Copilot
 
-### 3. Próximos Passos
-- [ ] Implementar tema Material UI no frontend
-- [ ] Migrar componentes existentes para Material UI
+### 3. Aplicação Frontend ✅
+- [x] Atualizar import em global.css para material3-tokens.css
+- [x] Copiar material3-tokens.css para src/styles
+- [x] Adicionar tokens de tipografia, espaçamento e outros sistemas
+- [x] Marcar design-system.css como legacy
+- [x] Atualizar documentação do brand README
+
+### 4. Próximos Passos (Opcionais)
+- [ ] Implementar tema Material UI no frontend (quando Material UI for adicionado)
+- [ ] Migrar componentes existentes para Material UI (quando Material UI for adicionado)
 - [ ] Testar modo escuro automático
 - [ ] Validar acessibilidade com WCAG AA
 

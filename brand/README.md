@@ -3,28 +3,32 @@
 > **📖 Sobre este documento:** Este é o manual oficial da marca Oficina Digital. 
 > Contém todas as diretrizes visuais, assets e especificaçõe## 🚀 Para Desenvolvedores
 
-### Material Design 3 (Recomendado)
+### Material Design 3 (Padrão)
+> ✅ **RECOMENDADO**: Use Material Design 3 para todos os desenvolvimentos
+
 1. **Tema Material UI**: `docs/material3-theme-setup.md` - Setup completo
 2. **CSS Tokens**: `identity/material3-tokens.css` - CSS variables semânticas
 3. **Migração**: `docs/material3-migration-guide.md` - Guia de migração
 4. **Componentes**: Use Material UI com tema customizado
-
-### Legacy (Compatibilidade)
-1. **Importe o CSS**: `@import url('../brand/identity/design-system.css');`
-2. **Use as variáveis**: `var(--color-primary-red)`, `var(--font-heading)`, etc.
-3. **Consulte**: `docs/quick-start-developers.md` para exemplos práticos
-4. **Classes prontas**: `assets/css-components.md` tem componentes CSS completos
 
 ### Integração com Copilot
 As instruções do GitHub Copilot referenciam Material Design 3:
 - Material UI components com tema customizado da marca
 - Tokens semânticos (`--md-sys-color-primary`, etc.)
 - Acessibilidade WCAG AA built-in
-- Touch targets 48px automáticosessárias 
-> para implementar a identidade visual de forma consistente em todos os materiais 
-> e plataformas do projeto.
-> 
-> **👥 Para quem:** Desenvolvedores, designers e colaboradores do projeto.
+- Touch targets 48px automáticos
+
+### Legacy Design System (Descontinuado)
+> ⚠️ **DEPRECADO**: Mantido apenas para compatibilidade com código legado. Não use em novos projetos.
+
+1. **CSS Variables**: `identity/design-system.css`
+2. **Guia rápido**: `docs/quick-start-developers.md`
+3. **Classes CSS**: `assets/css-components.md`
+
+---
+
+> **📖 Sobre este documento:** Este é o manual oficial da marca Oficina Digital. 
+> Contém todas as diretrizes visuais, assets e especificações necessárias 
 
 
 ## 🎯 Conceito da Marca
@@ -139,15 +143,15 @@ brand/
 ├── identity/
 │   ├── colors/
 │   │   ├── palette.json           # Cores originais (legacy)
-│   │   └── palette-material3.json # Sistema de cores Material 3
+│   │   └── palette-material3.json # Sistema de cores Material 3 ✅
 │   ├── logo/
 │   │   ├── logo-horizontal.svg
 │   │   ├── logo-square.svg
 │   │   └── logo-monochrome.svg
 │   ├── typography/
 │   │   └── fonts.json             # Tipografia em JSON
-│   ├── design-system.css          # CSS Variables (legacy)
-│   ├── material3-tokens.css       # Material 3 CSS tokens
+│   ├── design-system.css          # CSS Variables (DEPRECADO - não usar)
+│   ├── material3-tokens.css       # Material 3 CSS tokens ✅ USAR ESTE
 │   └── brand-guidelines.md
 ├── assets/
 │   ├── icons/
@@ -160,10 +164,10 @@ brand/
 │   └── css-components.md          # Classes CSS prontas (legacy)
 └── docs/
     ├── usage-examples.md          # Exemplos visuais
-    ├── quick-start-developers.md  # Guia rápido para devs
-    ├── material3-integration.md   # Guia Material 3 (original)
-    ├── material3-theme-setup.md   # Setup tema Material UI
-    ├── material3-migration-guide.md # Migração para Material 3
+    ├── quick-start-developers.md  # Guia rápido (legacy)
+    ├── material3-integration.md   # Guia Material 3 ✅
+    ├── material3-theme-setup.md   # Setup tema Material UI ✅
+    ├── material3-migration-guide.md # Migração para Material 3 ✅
     └── brand-checklist.md         # Checklist de qualidade
 ```
 

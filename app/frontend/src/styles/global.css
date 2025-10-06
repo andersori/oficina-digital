@@ -1,10 +1,10 @@
 /**
  * Global styles for Oficina Digital
- * Context: Base styles and resets following design system
- * @see brand/identity/design-system.css
+ * Context: Base styles and resets following Material Design 3
+ * @see brand/identity/material3-tokens.css
  */
 
-@import url('./design-system.css');
+@import url('./material3-tokens.css');
 
 /* Reset and base styles */
 * {
