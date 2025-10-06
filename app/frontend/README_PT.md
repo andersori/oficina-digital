@@ -6,8 +6,9 @@ Dashboard para gestão de agendamentos de oficinas mecânicas.
 
 - **React 18** + **TypeScript**
 - **Vite** - Build tool moderna e rápida
-- **Design System** próprio com CSS Variables
-- Sem dependências de UI libraries - código limpo e customizável
+- **Material Design 3** - Design system do Google com customização da marca
+- **Material UI** (@mui/material) - Componentes React implementando Material 3
+- Responsivo e acessível por padrão
 
 ## 📋 Pré-requisitos
 
@@ -72,24 +73,30 @@ O aplicativo estará disponível em: **http://localhost:5173/**
 
 ## 🎨 Design System
 
-O projeto utiliza um design system próprio baseado nas cores da marca:
+O projeto utiliza **Material Design 3** (Material You) do Google, customizado com as cores da marca Oficina Digital:
 
-### Cores Principais
-- **Vermelho Primário:** `#E53935` - Ações, destaques, CTAs
-- **Preto:** `#121212` - Texto principal, backgrounds
-- **Cinza Claro:** `#F5F5F5` - Fundos de seção
-- **Cinza Médio:** `#9E9E9E` - Texto secundário
+### Material 3 + Brand Integration
+- **Framework**: Material UI (@mui/material) com tema customizado
+- **Componentes**: Cards, Buttons, TextFields com design system consistente
+- **Acessibilidade**: WCAG AA built-in, touch targets de 48px
+- **Responsividade**: Breakpoints e layout system do Material 3
 
-### Tipografia
-- **Poppins** - Títulos e headings (bold, semibold)
-- **Inter** - Textos e botões (regular, medium)
+### Cores da Marca Mapeadas
+- **Primary**: `#E53935` (vermelho Oficina Digital) → Material 3 `primary` role
+- **Surface**: `#121212` (preto) → Material 3 `surface` tokens  
+- **Background**: `#F5F5F5` (cinza claro) → Material 3 `background`
+- **Text**: Hierarquia de cores seguindo Material 3
 
-### Componentes
-Todos os componentes seguem:
-- Botões com **mínimo 44px** de altura (acessibilidade mobile)
-- Alto contraste (4.5:1 mínimo)
-- Transições suaves (250ms)
-- Mobile-first responsive design
+### Tipografia Material 3
+- **Display/Headlines**: Poppins (brand) para títulos
+- **Body/Labels**: Inter (brand) para textos e botões
+- **Scale**: Seguindo escala tipográfica Material 3
+
+### Componentes Otimizados para Mecânicos
+- Botões com **mínimo 48px** de altura (padrão Material 3)
+- Cards com elevação e feedback visual
+- Formulários com validation states claros
+- Navigation otimizada para mobile (BottomNavigation)
 
 ## 📂 Estrutura do Projeto
 
@@ -134,11 +141,13 @@ O layout é **mobile-first** com breakpoints:
 
 ## ♿ Acessibilidade
 
-- ✅ Todos os botões com altura mínima de 44px
-- ✅ Labels descritivos para screen readers
-- ✅ Contraste adequado em todos os elementos
-- ✅ Focus visível em elementos interativos
-- ✅ Suporte a navegação por teclado
+Material Design 3 inclui acessibilidade por padrão:
+- ✅ Touch targets de 48px (padrão Material 3)
+- ✅ Focus visível automático em componentes Material
+- ✅ ARIA labels incluídos nos componentes
+- ✅ Contraste adequado garantido pelo sistema
+- ✅ Semântica HTML correta
+- ✅ Suporte a screen readers nativo
 
 ## 📝 Convenções de Código
 
@@ -150,8 +159,10 @@ Todos os componentes incluem comentários seguindo o padrão:
  * Component: NomeDoComponente
  * Context: Descrição do propósito
  * Users: Mecânicos (baixa-média familiaridade com tecnologia)
- * @see .ai/context.md
+ * Design: Material 3 component with brand theming
+ * @see .github/copilot-instructions.md
  */
+import { Card, Button } from '@mui/material';
 ```
 
 ### Terminologia Brasileira

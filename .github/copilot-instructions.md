@@ -4,8 +4,10 @@
 **Oficina Digital** is a SaaS platform for auto repair shop management in Brazil, focusing on appointment scheduling and service tracking. The target users are **mechanics and shop owners (25-60 years) with low-to-medium tech familiarity**.
 
 ## Architecture Overview
-- **Monorepo structure**: `app/frontend` (React/TypeScript) + `app/backend` (Kotlin/Spring Boot)
-- **Brand system**: Centralized in `brand/` with design tokens in JSON format
+- **Monorepo structure**: `app/frontend` (React/TypeScript + Material 3) + `app/backend` (Kotlin/Spring Boot)
+- **Design system**: Material Design 3 with Oficina Digital brand customization
+- **UI Library**: Material UI (@mui/material) with custom theming
+- **Brand assets**: Centralized in `brand/` with design tokens
 - **AI context**: Comprehensive documentation in `.ai/` directory
 - **Infrastructure**: Docker containers, Terraform for AWS deployment
 
@@ -17,21 +19,21 @@
 - **Language**: Portuguese terminology - use "agendamento" (not "booking"), "serviço" (not "OS")
 - **Error messages**: Friendly and actionable, never technical jargon
 
-### 2. Brand Consistency
-Always reference design tokens from `brand/identity/`:
-- **Colors**: Use variables from `brand/identity/design-system.css`
-  - `--color-primary-red` for actions and highlights
-  - `--color-neutral-black` for primary text and backgrounds
-  - `--color-neutral-gray-light` for section backgrounds
-  - `--color-neutral-gray-medium` for secondary text
-- **Typography**: 
-  - `--font-heading` for titles and logos (Poppins)
-  - `--font-body` for text and buttons (Inter)
+### 2. Material Design 3 + Brand Integration
+Use Material Design 3 components with Oficina Digital brand theming:
+- **Components**: Material UI (@mui/material) with custom theme
+- **Colors**: Brand colors mapped to Material 3 semantic tokens
+  - `--color-primary-red` → Material 3 `primary` color role
+  - `--color-neutral-black` → Material 3 `surface` tokens
+- **Typography**: Material 3 scale with brand fonts
+  - Poppins for display/headline scales
+  - Inter for body/label scales
+- **Accessibility**: Material 3 built-in WCAG AA compliance
 
 **Reference files**:
-- Color palette: `brand/identity/colors/palette.json`
-- Typography specs: `brand/identity/typography/fonts.json`
-- CSS variables: `brand/identity/design-system.css`
+- Color mapping: `brand/identity/colors/palette.json`
+- Typography integration: `brand/identity/typography/fonts.json` 
+- Material 3 setup: `brand/docs/material3-integration.md`
 
 ### 3. Mobile-First Responsive Design
 - **Priority**: Mobile (70%) > Desktop (25%) > Tablet (5%)
@@ -62,7 +64,7 @@ Always reference design tokens from `brand/identity/`:
  * Component: AppointmentCard
  * Context: Display appointment for shop dashboard
  * Users: Mechanics (low-tech familiarity)
- * @see .ai/context.md
+ * @see .github/copilot-instructions.md
  */
 ```
 

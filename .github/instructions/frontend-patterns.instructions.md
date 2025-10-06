@@ -13,18 +13,27 @@ Always include context comments for AI agents:
  * Component: AppointmentCard
  * Context: Display appointment info for shop dashboard
  * Users: Mechanics (low-tech familiarity)
- * @see .ai/context.md
+ * Design: Material 3 Card with brand theming
+ * @see .github/copilot-instructions.md
  */
+import { Card, CardContent, Button } from '@mui/material';
+
 export function AppointmentCard({ appointment }: Props) {
-  // Component implementation
+  return (
+    <Card variant="outlined">
+      <CardContent>
+        {/* Material 3 components with brand styling */}
+      </CardContent>
+    </Card>
+  );
 }
 ```
 
-## Design System Integration
-- **Import CSS**: `@import url('../brand/identity/design-system.css');`
-- **Use variables**: Reference CSS custom properties from the design system
-- **Follow patterns**: Check `brand/docs/quick-start-developers.md` for examples
-- **Ready components**: Use classes from `brand/assets/css-components.md`
+## Material Design 3 Integration
+- **Components**: Use `@mui/material` with Material 3 theming
+- **Theme**: Custom theme with Oficina Digital brand colors
+- **Typography**: Material 3 scale with Poppins/Inter fonts
+- **Reference**: `brand/docs/material3-integration.md` for setup
 
 ## State Management Patterns
 - **Use**: Context API + React Query for data fetching
@@ -57,22 +66,25 @@ interface AppointmentProps {
 ```
 
 ## Mobile-First Responsive Patterns
-Follow the responsive breakpoints defined in `brand/identity/design-system.css`:
+Use Material 3 breakpoints with brand customization:
 
-```css
-/* Mobile First (default) - as defined in design system */
-.component {
-  /* Use CSS variables from brand/identity/design-system.css */
-  padding: var(--spacing-md);
-  font-size: var(--font-size-base);
+```typescript
+// Material UI breakpoints with brand theming
+import { useTheme, useMediaQuery } from '@mui/material';
+
+function ResponsiveComponent() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  
+  return (
+    <Container maxWidth={isMobile ? 'sm' : 'lg'}>
+      {/* Material 3 responsive components */}
+    </Container>
+  );
 }
-
-/* Tablet and Desktop - follow design system patterns */
-@media (min-width: 768px) { /* Tablet */ }
-@media (min-width: 1024px) { /* Desktop */ }
 ```
 
-**Reference**: `brand/identity/design-system.css` for spacing, typography, and breakpoint variables.
+**Reference**: Material 3 responsive guidelines + `brand/identity/design-system.css` for brand spacing.
 
 ## Performance Requirements
 - **Lazy loading**: For routes and heavy components
