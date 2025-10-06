@@ -18,6 +18,8 @@ export function Dashboard() {
   const [viewMode, setViewMode] = useState<ViewMode>('week');
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const [showFilterSidebar, setShowFilterSidebar] = useState(false); // Should start closed
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const [filters, setFilters] = useState<Filters>({
     status: [],
     branchIds: [],
@@ -114,77 +116,139 @@ export function Dashboard() {
     filters.serviceNames.length > 0;
 
   return (
-    <div className="dashboard">
+    <div className={`dashboard ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       {/* Header */}
       <header className="dashboard-header">
         <div className="dashboard-header-top">
           <div className="dashboard-branding">
+            <button 
+              className="btn-toggle-filters"
+              onClick={() => setShowFilterSidebar(!showFilterSidebar)}
+              aria-label="Abrir filtros"
+            >
+              ☰
+            </button>
             <h1 className="dashboard-title">Oficina Digital</h1>
           </div>
           
-          {/* User Profile */}
-          <div className="user-profile">
-            <span className="user-name">{mockShopOwner.name}</span>
-            <div className="user-avatar">
-              <span className="user-initials">{mockShopOwner.name.split(' ').map(n => n[0]).join('')}</span>
+          {/* User Profile & Theme Toggle */}
+          <div className="header-actions">
+            <button 
+              className="btn-theme-toggle"
+              onClick={() => setIsDarkMode(!isDarkMode)}
+              aria-label={isDarkMode ? "Mudar para modo claro" : "Mudar para modo escuro"}
+            >
+              {isDarkMode ? '☀️' : '🌙'}
+            </button>
+            <div className="user-profile">
+              <span className="user-name">{mockShopOwner.name}</span>
+              <div className="user-avatar">
+                <span className="user-initials">{mockShopOwner.name.split(' ').map(n => n[0]).join('')}</span>
+              </div>
             </div>
           </div>
         </div>
+      </header>
 
-        {/* Filter Bar */}
-        <div className="filter-bar">
-          <div className="filter-group">
-            <label className="filter-label">Status:</label>
-            <div className="filter-options-inline">
-              {allStatuses.map(status => (
-                <button
-                  key={status}
-                  className={`filter-chip ${filters.status.includes(status) ? 'active' : ''}`}
-                  onClick={() => handleStatusToggle(status)}
-                >
-                  {getStatusLabel(status)}
-                </button>
-              ))}
-            </div>
-          </div>
+      {/* Left Sidebar with Filters */}
+      {showFilterSidebar && (
+        <div className="filter-sidebar-overlay" onClick={() => setShowFilterSidebar(false)} />
+      )}
+      
+      <aside className={`filter-sidebar-left ${showFilterSidebar ? 'open' : ''}`}>
+        <div className="filter-sidebar-header">
+          <h2 className="filter-sidebar-title">Filtros</h2>
+          <button 
+            className="btn-close-sidebar"
+            onClick={() => setShowFilterSidebar(false)}
+            aria-label="Fechar filtros"
+          >
+            ✕
+          </button>
+        </div>
 
-          <div className="filter-group">
-            <label className="filter-label">Filial:</label>
-            <div className="filter-options-inline">
-              {mockBranches.map(branch => (
-                <button
-                  key={branch.id}
-                  className={`filter-chip ${filters.branchIds.includes(branch.id) ? 'active' : ''}`}
-                  onClick={() => handleBranchToggle(branch.id)}
-                >
-                  {branch.name}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="filter-group">
-            <label className="filter-label">Serviço:</label>
-            <div className="filter-options-inline">
-              {serviceNames.slice(0, 5).map(serviceName => (
-                <button
-                  key={serviceName}
-                  className={`filter-chip ${filters.serviceNames.includes(serviceName) ? 'active' : ''}`}
-                  onClick={() => handleServiceToggle(serviceName)}
-                >
-                  {serviceName}
-                </button>
-              ))}
+        <div className="filter-sidebar-content">
+          {/* Calendar Section */}
+          <div className="filter-section">
+            <h3 className="filter-section-title">Calendário</h3>
+            <div className="calendar-wrapper">
+              <input
+                type="month"
+                value={`${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}`}
+                onChange={(e) => {
+                  const [year, month] = e.target.value.split('-');
+                  const newDate = new Date(parseInt(year), parseInt(month) - 1, 1);
+                  setCurrentDate(newDate);
+                }}
+                className="calendar-month-picker"
+              />
+              <input
+                type="date"
+                value={formatInputDate(currentDate)}
+                onChange={handleDateChange}
+                className="calendar-date-picker"
+              />
             </div>
           </div>
 
           {hasActiveFilters && (
-            <button className="btn-clear-filters" onClick={handleClearFilters}>
-              Limpar Filtros
+            <button className="btn-clear-filters-sidebar" onClick={handleClearFilters}>
+              Limpar Todos os Filtros
             </button>
           )}
+
+          {/* Status Filter */}
+          <div className="filter-section">
+            <h3 className="filter-section-title">Status do Agendamento</h3>
+            <div className="filter-options">
+              {allStatuses.map(status => (
+                <label key={status} className="filter-checkbox">
+                  <input
+                    type="checkbox"
+                    checked={filters.status.includes(status)}
+                    onChange={() => handleStatusToggle(status)}
+                  />
+                  <span className="filter-checkbox-label">{getStatusLabel(status)}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* Branch Filter */}
+          <div className="filter-section">
+            <h3 className="filter-section-title">Filial</h3>
+            <div className="filter-options">
+              {mockBranches.map(branch => (
+                <label key={branch.id} className="filter-checkbox">
+                  <input
+                    type="checkbox"
+                    checked={filters.branchIds.includes(branch.id)}
+                    onChange={() => handleBranchToggle(branch.id)}
+                  />
+                  <span className="filter-checkbox-label">{branch.name}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* Service Filter */}
+          <div className="filter-section">
+            <h3 className="filter-section-title">Tipo de Serviço</h3>
+            <div className="filter-options">
+              {serviceNames.map(serviceName => (
+                <label key={serviceName} className="filter-checkbox">
+                  <input
+                    type="checkbox"
+                    checked={filters.serviceNames.includes(serviceName)}
+                    onChange={() => handleServiceToggle(serviceName)}
+                  />
+                  <span className="filter-checkbox-label">{serviceName}</span>
+                </label>
+              ))}
+            </div>
+          </div>
         </div>
-      </header>
+      </aside>
 
       {/* Navigation Controls */}
       <div className="dashboard-controls">
