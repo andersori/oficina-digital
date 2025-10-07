@@ -18,20 +18,22 @@
 - **Language**: Portuguese terminology - use "agendamento" (not "booking"), "serviço" (not "OS")
 - **Error messages**: Friendly and actionable, never technical jargon
 
-### 2. Material Design 3 + Brand Integration
+### 2. Material Design 3
 Use Material UI components with Oficina Digital brand theming:
 - **Components**: Material UI (@mui/material) with custom theme
 - **Colors**: Brand colors mapped to Material 3 semantic tokens
-  - `--md-sys-color-primary` → #769CDF
-  - `--md-sys-color-secondary` → #8991A2
-  - `--md-sys-color-tertiary` → #A288A6
-  - `--md-sys-color-error` → #FF5449
-  - `--md-sys-color-neutral` → #919093
-  - `--md-sys-color-neutral-variant` → #8E9098
-- **Typography**: Material 3 scale with brand fonts
-  - Poppins for display/headline scales
-  - Inter for body/label scales
+  - `--md-sys-color-primary` → #1976D2 (azul confiável)
+  - `--md-sys-color-secondary` → #FFA726 (laranja energético)
+  - `--md-sys-color-tertiary` → #66BB6A (verde positivo)
+  - `--md-sys-color-error` → #F44336 (vermelho de alerta)
+- **Typography**: Material 3 scale with Roboto font family
 - **Accessibility**: Material 3 built-in WCAG AA compliance
+
+**Reference files**:
+- Color mapping: `brand/identity/colors/palette-material3.json`
+- CSS tokens: `brand/identity/css/material3-tokens.css` 
+- Setup guide: `brand/docs/material3-setup.md`
+- Migration guide: `brand/docs/material3-integration.md`
 
 ### 3. Mobile-First Responsive Design
 - **Priority**: Mobile (70%) > Desktop (25%) > Tablet (5%)
