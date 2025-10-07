@@ -1,0 +1,23 @@
+/**
+ * Oficina Digital - Global Styles
+ * Context: Base styles for the application
+ * Design: Minimal overrides, Material UI handles most styling
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
