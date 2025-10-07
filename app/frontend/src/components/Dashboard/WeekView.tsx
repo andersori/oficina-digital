@@ -9,7 +9,6 @@
 import React from 'react';
 import {
   Box,
-  Grid,
   Card,
   CardContent,
   Typography,
@@ -53,21 +52,42 @@ export const WeekView: React.FC = () => {
   const isToday = (day: Date) => isSameDay(day, new Date());
 
   return (
-    <Box sx={{ width: '100%', overflowX: 'auto' }}>
-      <Grid container spacing={isMobile ? 1 : 2} sx={{ minWidth: isMobile ? 'auto' : 800 }}>
+    <Box 
+      sx={{ 
+        width: '100%', 
+        height: '100%',
+        overflowX: 'auto',
+        overflowY: 'auto'
+      }}
+    >
+      <Box 
+        sx={{ 
+          display: 'flex',
+          gap: isMobile ? 1 : 2,
+          minWidth: 'min-content',
+          pb: 2
+        }}
+      >
         {weekDays.map((day, index) => {
           const dayAppointments = getAppointmentsForDay(day);
           const appointmentCount = dayAppointments.length;
           const today = isToday(day);
 
           return (
-            <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
+            <Box 
+              key={index}
+              sx={{
+                minWidth: isMobile ? 280 : 200,
+                flexShrink: 0
+              }}
+            >
               <Card
                 onClick={() => handleDayClick(day)}
                 sx={{
                   cursor: 'pointer',
                   border: today ? `2px solid ${theme.palette.primary.main}` : 'none',
                   transition: 'all 0.2s',
+                  height: '100%',
                   '&:hover': {
                     transform: 'translateY(-4px)',
                     boxShadow: theme.shadows[4],
@@ -165,10 +185,10 @@ export const WeekView: React.FC = () => {
                   </Box>
                 </CardContent>
               </Card>
-            </Grid>
+            </Box>
           );
         })}
-      </Grid>
+      </Box>
     </Box>
   );
 };

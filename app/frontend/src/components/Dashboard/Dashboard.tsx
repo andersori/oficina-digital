@@ -71,12 +71,21 @@ export const Dashboard: React.FC = () => {
   };
 
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
+    <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column', bgcolor: 'background.default' }}>
       <Header />
 
-      <Container maxWidth="xl" sx={{ py: 3 }}>
+      <Container 
+        maxWidth="xl" 
+        sx={{ 
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          py: 3,
+          overflow: 'hidden'
+        }}
+      >
         {/* Navigation Controls */}
-        <Paper elevation={1} sx={{ p: 2, mb: 3 }}>
+        <Paper elevation={1} sx={{ p: 2, mb: 3, flexShrink: 0 }}>
           <Box
             sx={{
               display: 'flex',
@@ -87,7 +96,7 @@ export const Dashboard: React.FC = () => {
             }}
           >
             {/* Date Navigation */}
-            <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+            <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'wrap' }}>
               <IconButton
                 onClick={handlePrevious}
                 sx={{ minWidth: 48, minHeight: 48 }}
@@ -95,6 +104,15 @@ export const Dashboard: React.FC = () => {
               >
                 <ChevronLeft />
               </IconButton>
+
+              <Button
+                variant="outlined"
+                onClick={() => setFilterMenuOpen(true)}
+                startIcon={<FilterList />}
+                sx={{ minHeight: 48 }}
+              >
+                Filtros
+              </Button>
 
               <Button
                 variant="outlined"
@@ -122,17 +140,8 @@ export const Dashboard: React.FC = () => {
               </Box>
             </Box>
 
-            {/* View Mode Toggle and Filters */}
+            {/* View Mode Toggle */}
             <Box sx={{ display: 'flex', gap: 1, justifyContent: 'space-between' }}>
-              <Button
-                variant="outlined"
-                onClick={() => setFilterMenuOpen(true)}
-                startIcon={<FilterList />}
-                sx={{ minHeight: 48 }}
-              >
-                Filtros
-              </Button>
-
               <ToggleButtonGroup
                 value={viewMode}
                 exclusive
@@ -162,8 +171,10 @@ export const Dashboard: React.FC = () => {
           )}
         </Paper>
 
-        {/* Main Content */}
-        <Box>{viewMode === 'week' ? <WeekView /> : <DayView />}</Box>
+        {/* Main Content with scroll */}
+        <Box sx={{ flex: 1, overflow: 'hidden' }}>
+          {viewMode === 'week' ? <WeekView /> : <DayView />}
+        </Box>
       </Container>
 
       {/* Filter Menu */}

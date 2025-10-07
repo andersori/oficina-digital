@@ -6,7 +6,7 @@
  * @see .github/copilot-instructions.md
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Card,
@@ -15,21 +15,26 @@ import {
   Chip,
   useTheme,
   Stack,
+  Button,
 } from '@mui/material';
 import {
   DirectionsCar,
   Build,
   Schedule,
   Person,
+  Add,
 } from '@mui/icons-material';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { useAppContext } from '../../contexts/AppContext';
+import { AddServiceDialog } from './AddServiceDialog';
 import type { Appointment, AppointmentStatus } from '../../types';
 
 export const DayView: React.FC = () => {
   const { appointments, selectedDate, filters } = useAppContext();
   const theme = useTheme();
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedTime, setSelectedTime] = useState('');
 
   const dayStr = format(selectedDate, 'yyyy-MM-dd');
   const workingHours = Array.from({ length: 11 }, (_, i) => 8 + i); // 08:00 to 18:00
@@ -78,6 +83,11 @@ export const DayView: React.FC = () => {
   const getAppointmentForHour = (hour: number): Appointment | null => {
     const timeStr = `${hour.toString().padStart(2, '0')}:00`;
     return dayAppointments.find((app) => app.time === timeStr) || null;
+  };
+
+  const handleAddService = (hour: number) => {
+    setSelectedTime(`${hour.toString().padStart(2, '0')}:00`);
+    setDialogOpen(true);
   };
 
   const AppointmentCard: React.FC<{ appointment: Appointment }> = ({ appointment }) => (
@@ -159,57 +169,99 @@ export const DayView: React.FC = () => {
           borderColor: 'primary.main',
         },
       }}
+      onClick={() => handleAddService(hour)}
     >
       <CardContent>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, opacity: 0.6 }}>
-          <Schedule sx={{ fontSize: 20 }} />
-          <Typography variant="body1">
-            {hour.toString().padStart(2, '0')}:00 - Horário disponível
-          </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, opacity: 0.6 }}>
+            <Schedule sx={{ fontSize: 20 }} />
+            <Typography variant="body1">
+              {hour.toString().padStart(2, '0')}:00 - Horário disponível
+            </Typography>
+          </Box>
+          <Button
+            variant="outlined"
+            size="small"
+            startIcon={<Add />}
+            sx={{ minHeight: 36 }}
+          >
+            Registrar
+          </Button>
         </Box>
       </CardContent>
     </Card>
   );
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Typography variant="h5" sx={{ mb: 3, fontWeight: 600 }}>
-        {format(selectedDate, "EEEE, d 'de' MMMM", { locale: ptBR })}
-      </Typography>
-
-      <Stack spacing={2}>
-        {workingHours.map((hour) => {
-          const appointment = getAppointmentForHour(hour);
-          return (
-            <Box key={hour}>
-              {appointment ? (
-                <AppointmentCard appointment={appointment} />
-              ) : (
-                <EmptySlot hour={hour} />
-              )}
-            </Box>
-          );
-        })}
-      </Stack>
-
-      {dayAppointments.length === 0 && (
-        <Box
-          sx={{
-            textAlign: 'center',
-            py: 8,
-            bgcolor: 'background.paper',
-            borderRadius: 2,
-            border: `1px dashed ${theme.palette.divider}`,
+    <Box 
+      sx={{ 
+        width: '100%', 
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        overflow: 'hidden'
+      }}
+    >
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3, flexShrink: 0 }}>
+        <Typography variant="h5" sx={{ fontWeight: 600 }}>
+          {format(selectedDate, "EEEE, d 'de' MMMM", { locale: ptBR })}
+        </Typography>
+        <Button
+          variant="contained"
+          startIcon={<Add />}
+          onClick={() => {
+            setSelectedTime('');
+            setDialogOpen(true);
           }}
+          sx={{ minHeight: 48 }}
         >
-          <Typography variant="h6" color="text.secondary">
-            Nenhum agendamento para este dia
-          </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-            Todos os horários estão disponíveis
-          </Typography>
-        </Box>
-      )}
+          Novo Serviço
+        </Button>
+      </Box>
+
+      <Box sx={{ flex: 1, overflowY: 'auto', pr: 1 }}>
+        <Stack spacing={2}>
+          {workingHours.map((hour) => {
+            const appointment = getAppointmentForHour(hour);
+            return (
+              <Box key={hour}>
+                {appointment ? (
+                  <AppointmentCard appointment={appointment} />
+                ) : (
+                  <EmptySlot hour={hour} />
+                )}
+              </Box>
+            );
+          })}
+        </Stack>
+
+        {dayAppointments.length === 0 && (
+          <Box
+            sx={{
+              textAlign: 'center',
+              py: 8,
+              bgcolor: 'background.paper',
+              borderRadius: 2,
+              border: `1px dashed ${theme.palette.divider}`,
+              mt: 2
+            }}
+          >
+            <Typography variant="h6" color="text.secondary">
+              Nenhum agendamento para este dia
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+              Todos os horários estão disponíveis
+            </Typography>
+          </Box>
+        )}
+      </Box>
+
+      <AddServiceDialog
+        open={dialogOpen}
+        onClose={() => setDialogOpen(false)}
+        selectedDate={selectedDate}
+        selectedTime={selectedTime}
+      />
     </Box>
   );
 };
