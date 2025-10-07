@@ -1,0 +1,303 @@
+/**
+ * Oficina Digital - Material Design 3 CSS Tokens
+ * 
+ * Customização dos tokens Material Design 3 para a plataforma Oficina Digital
+ * 
+ * Cores do tema:
+ * - Primary: #1976D2 (Azul confiável) 
+ * - Secondary: #FFA726 (Laranja energético)
+ * - Tertiary: #66BB6A (Verde positivo)
+ * - Error: #F44336 (Vermelho de alerta)
+ * 
+ * Uso: Importar este arquivo no seu projeto React + Material UI
+ * 
+ * @framework React + Material UI
+ * @version 1.0.0
+ */
+
+/* ============================================
+   TOKENS MATERIAL DESIGN 3 - TEMA CLARO
+   ============================================ */
+
+:root {
+  /* Cores primárias - Azul confiável */
+  --md-sys-color-primary: #1976D2;
+  --md-sys-color-on-primary: #FFFFFF;
+  --md-sys-color-primary-container: #E3F2FD;
+  --md-sys-color-on-primary-container: #0D47A1;
+
+  /* Cores secundárias - Laranja energético */
+  --md-sys-color-secondary: #FFA726;
+  --md-sys-color-on-secondary: #000000;
+  --md-sys-color-secondary-container: #FFF3E0;
+  --md-sys-color-on-secondary-container: #E65100;
+
+  /* Cores terciárias - Verde positivo */
+  --md-sys-color-tertiary: #66BB6A;
+  --md-sys-color-on-tertiary: #FFFFFF;
+  --md-sys-color-tertiary-container: #E8F5E8;
+  --md-sys-color-on-tertiary-container: #2E7D32;
+
+  /* Cores de erro */
+  --md-sys-color-error: #F44336;
+  --md-sys-color-on-error: #FFFFFF;
+  --md-sys-color-error-container: #FFEBEE;
+  --md-sys-color-on-error-container: #B71C1C;
+
+  /* Cores de superfície */
+  --md-sys-color-background: #FAFAFA;
+  --md-sys-color-on-background: #212121;
+  --md-sys-color-surface: #FFFFFF;
+  --md-sys-color-on-surface: #212121;
+  --md-sys-color-surface-variant: #F5F5F5;
+  --md-sys-color-on-surface-variant: #424242;
+
+  /* Contornos e divisores */
+  --md-sys-color-outline: #BDBDBD;
+  --md-sys-color-outline-variant: #E0E0E0;
+
+  /* Sombras */
+  --md-sys-color-shadow: rgba(0, 0, 0, 0.2);
+  --md-sys-color-scrim: rgba(0, 0, 0, 0.6);
+
+  /* Elevação de superfícies */
+  --md-sys-elevation-level0: none;
+  --md-sys-elevation-level1: 0px 1px 3px rgba(0, 0, 0, 0.12);
+  --md-sys-elevation-level2: 0px 2px 6px rgba(0, 0, 0, 0.16);
+  --md-sys-elevation-level3: 0px 4px 12px rgba(0, 0, 0, 0.18);
+  --md-sys-elevation-level4: 0px 8px 24px rgba(0, 0, 0, 0.20);
+  --md-sys-elevation-level5: 0px 16px 48px rgba(0, 0, 0, 0.24);
+}
+
+/* ============================================
+   TEMA ESCURO - OFICINA DIGITAL
+   ============================================ */
+
+[data-theme="dark"] {
+  /* Cores primárias adaptadas para escuro */
+  --md-sys-color-primary: #90CAF9;
+  --md-sys-color-on-primary: #0D47A1;
+  --md-sys-color-primary-container: #1565C0;
+  --md-sys-color-on-primary-container: #E3F2FD;
+
+  /* Cores secundárias adaptadas */
+  --md-sys-color-secondary: #FFCC02;
+  --md-sys-color-on-secondary: #000000;
+  --md-sys-color-secondary-container: #F57C00;
+  --md-sys-color-on-secondary-container: #FFF3E0;
+
+  /* Cores terciárias adaptadas */
+  --md-sys-color-tertiary: #A5D6A7;
+  --md-sys-color-on-tertiary: #2E7D32;
+  --md-sys-color-tertiary-container: #4CAF50;
+  --md-sys-color-on-tertiary-container: #E8F5E8;
+
+  /* Cores de erro para tema escuro */
+  --md-sys-color-error: #FF6B6B;
+  --md-sys-color-on-error: #FFFFFF;
+  --md-sys-color-error-container: #D32F2F;
+  --md-sys-color-on-error-container: #FFEBEE;
+
+  /* Superfícies escuras */
+  --md-sys-color-background: #121212;
+  --md-sys-color-on-background: #FFFFFF;
+  --md-sys-color-surface: #1E1E1E;
+  --md-sys-color-on-surface: #FFFFFF;
+  --md-sys-color-surface-variant: #2C2C2C;
+  --md-sys-color-on-surface-variant: #CCCCCC;
+
+  /* Contornos para tema escuro */
+  --md-sys-color-outline: #616161;
+  --md-sys-color-outline-variant: #424242;
+
+  /* Sombras para tema escuro */
+  --md-sys-color-shadow: rgba(0, 0, 0, 0.5);
+  --md-sys-color-scrim: rgba(0, 0, 0, 0.8);
+}
+
+/* ============================================
+   CLASSES UTILITÁRIAS OFICINA DIGITAL
+   ============================================ */
+
+/* Status de agendamentos */
+.oficina-status-agendado {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.oficina-status-andamento {
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.oficina-status-concluido {
+  background-color: var(--md-sys-color-tertiary-container);
+  color: var(--md-sys-color-on-tertiary-container);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.oficina-status-cancelado {
+  background-color: var(--md-sys-color-error-container);
+  color: var(--md-sys-color-on-error-container);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Botões customizados */
+.oficina-button-primary {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  min-height: 48px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.oficina-button-primary:hover {
+  filter: brightness(1.1);
+  box-shadow: var(--md-sys-elevation-level2);
+}
+
+.oficina-button-secondary {
+  background-color: var(--md-sys-color-secondary);
+  color: var(--md-sys-color-on-secondary);
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  min-height: 48px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.oficina-button-secondary:hover {
+  filter: brightness(1.1);
+  box-shadow: var(--md-sys-elevation-level2);
+}
+
+/* Cards de agendamento */
+.oficina-card {
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  border-radius: 16px;
+  box-shadow: var(--md-sys-elevation-level1);
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: box-shadow 0.2s ease;
+}
+
+.oficina-card:hover {
+  box-shadow: var(--md-sys-elevation-level2);
+}
+
+/* Ícones com cores semânticas */
+.oficina-icon-primary {
+  color: var(--md-sys-color-primary);
+}
+
+.oficina-icon-secondary {
+  color: var(--md-sys-color-secondary);
+}
+
+.oficina-icon-success {
+  color: var(--md-sys-color-tertiary);
+}
+
+.oficina-icon-error {
+  color: var(--md-sys-color-error);
+}
+
+/* Layout responsivo */
+.oficina-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+@media (max-width: 768px) {
+  .oficina-container {
+    padding: 0 8px;
+  }
+  
+  .oficina-button-primary,
+  .oficina-button-secondary {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+}
+
+/* ============================================
+   UTILITÁRIOS DE ACESSIBILIDADE
+   ============================================ */
+
+/* Foco visível para navegação por teclado */
+.oficina-focus-visible:focus-visible {
+  outline: 2px solid var(--md-sys-color-primary);
+  outline-offset: 2px;
+}
+
+/* Text contrasts para leitores de tela */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ============================================
+   COMENTÁRIOS PARA DESENVOLVEDORES
+   ============================================ */
+
+/*
+COMO USAR OS TOKENS OFICINA DIGITAL:
+
+1. Importar este arquivo no seu projeto React:
+   import './brand/identity/css/material3-tokens.css';
+
+2. Usar tokens CSS nos componentes:
+   .meu-componente {
+     background-color: var(--md-sys-color-primary);
+     color: var(--md-sys-color-on-primary);
+   }
+
+3. Para Material UI, configurar no tema:
+   const theme = createTheme({
+     palette: {
+       primary: {
+         main: '#1976D2',
+       },
+     },
+   });
+
+4. Para tema escuro, adicionar atributo data-theme:
+   <body data-theme="dark">
+
+IMPORTANTE:
+- Sempre usar tokens CSS para consistência
+- Testar acessibilidade com ferramentas adequadas  
+- Manter contraste mínimo 4.5:1 (WCAG AA)
+- Cores adequadas para mecânicos brasileiros (25-60 anos)
+*/

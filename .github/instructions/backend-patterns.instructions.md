@@ -8,7 +8,7 @@ applyTo: "**/*.{kt,kts}"
 ## Architecture Pattern
 - **Framework**: Spring Boot with Kotlin
 - **Database**: PostgreSQL with JPA/Hibernate
-- **Architecture**: Clean Architecture / Hexagonal
+- **Architecture**: Clean Architecture and Hexagonal
 - **API Style**: RESTful with clear resource naming
 
 ## Entity Patterns

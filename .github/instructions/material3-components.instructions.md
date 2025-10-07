@@ -70,18 +70,6 @@ const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 - Use `CircularProgress` for loading states
 - Use `Skeleton` for content placeholders
 
-## Brand Color Integration
-```typescript
-// Use theme colors mapped to brand
-sx={{
-  backgroundColor: 'primary.main', // --color-primary-red
-  color: 'primary.contrastText',
-  '&:hover': {
-    backgroundColor: 'primary.dark'
-  }
-}}
-```
-
 ## Accessibility (Built-in Material 3)
 - Components include ARIA labels automatically
 - Focus management handled by Material 3

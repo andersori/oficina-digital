@@ -1,14 +1,30 @@
-# Oficina Digital - Brand Identity
+# Oficina Digital - Brand System
 
-> **📖 Sobre este documento:** Este é o manual oficial da marca Oficina Digital. 
-> Contém todas as diretrizes visuais, assets e especificaçõe## 🚀 Para Desenvolvedores
+> Sistema de design completo para a plataforma de gestão de oficinas mecânicas
 
-### Material Design 3 (Padrão)
+## 🎨 Visão Geral
+
+Este diretório contém toda a identidade visual, assets e guidelines para manter a consistência da marca **Oficina Digital** em todas as plataformas e touchpoints.
+
+### **Identidade da Marca**
+- **Setor**: Gestão de oficinas mecânicas e serviços automotivos
+- **Público**: Mecânicos e donos de oficina brasileiros (25-60 anos)
+- **Valores**: Confiabilidade, simplicidade, profissionalismo, eficiência
+
+### **Framework de Design**
+- **React + Material UI** com tema customizado
+- **Material Design 3** como base do sistema
+- **CSS Custom Properties** para máxima flexibilidade
+- **Mobile-first** com foco em acessibilidade
+
+## 🚀 Para Desenvolvedores
+
+### Material Design 3 (Recomendado)
 > ✅ **RECOMENDADO**: Use Material Design 3 para todos os desenvolvimentos
 
-1. **Tema Material UI**: `docs/material3-theme-setup.md` - Setup completo
-2. **CSS Tokens**: `identity/material3-tokens.css` - CSS variables semânticas
-3. **Migração**: `docs/material3-migration-guide.md` - Guia de migração
+1. **Tema Material UI**: `docs/material3-setup.md` - Setup completo
+2. **CSS Tokens**: `identity/css/material3-tokens.css` - CSS variables semânticas
+3. **Migração**: `docs/material3-integration.md` - Guia de migração
 4. **Componentes**: Use Material UI com tema customizado
 
 ### Integração com Copilot
@@ -18,211 +34,333 @@ As instruções do GitHub Copilot referenciam Material Design 3:
 - Acessibilidade WCAG AA built-in
 - Touch targets 48px automáticos
 
-### Legacy Design System (Descontinuado)
-> ⚠️ **DEPRECADO**: Mantido apenas para compatibilidade com código legado. Não use em novos projetos.
-
-1. **CSS Variables**: `identity/design-system.css`
-2. **Guia rápido**: `docs/quick-start-developers.md`
-3. **Classes CSS**: `assets/css-components.md`
-
----
-
-> **📖 Sobre este documento:** Este é o manual oficial da marca Oficina Digital. 
-> Contém todas as diretrizes visuais, assets e especificações necessárias 
-
-
-## 🎯 Conceito da Marca
-
-**Oficina Digital** é uma plataforma que ajuda oficinas mecânicas a organizar serviços e agendamentos de forma simples e moderna.
-
-### Valores da Marca
-A marca transmite:
-- **Tecnologia** (é digital)
-- **Confiança e profissionalismo** (voltada a negócios reais)
-- **Simplicidade e acessibilidade** (sem parecer complicada)
-
-### Personalidade
-- **📣 Tom da marca**: direto, útil, sem jargões técnicos
-- **📱 Personalidade**: moderna, prática, humana
-
----
-
-## 🎨 Paleta de Cores
-
-| Cor | Hex | RGB | Uso Sugerido |
-|-----|-----|-----|--------------|
-| 🔴 **Vermelho Primário** | `#E53935` | `rgb(229, 57, 53)` | Botões, ícones de ação, destaques |
-| ⚫ **Preto Profundo** | `#121212` | `rgb(18, 18, 18)` | Fundo principal, textos em destaque |
-| ⚪ **Cinza Claro** | `#F5F5F5` | `rgb(245, 245, 245)` | Fundo de seções, áreas neutras |
-| 🩶 **Cinza Médio** | `#9E9E9E` | `rgb(158, 158, 158)` | Textos secundários, bordas sutis |
-
-### Significado das Cores
-O **vermelho** dá energia e urgência (como um pit stop ou carro de corrida), enquanto o **preto** traz autoridade e elegância.
-
-*Configurações disponíveis em: [`identity/colors/palette.json`](identity/colors/palette.json)*
-
----
-
-## 🔠 Tipografia
-
-### Hierarquia de Fontes
-
-| Uso | Fonte | Peso | Características |
-|-----|-------|------|-----------------|
-| **Título/Logotipo** | Poppins ou Montserrat | Bold/ExtraBold | Letras firmes e geométricas |
-| **Texto/Botões** | Inter ou Roboto | Regular/Medium | Excelente legibilidade em telas pequenas |
-
-### Exemplo Visual
-```
-OFICINA DIGITAL
-Gestão e agendamentos simples para sua oficina
-```
-
-*Configurações disponíveis em: [`identity/typography/fonts.json`](identity/typography/fonts.json)*
-
----
-
-## 🧩 Logotipo
-
-### Conceito do Logo
-- **Ícone**: Engrenagem estilizada com um sinal de "check" ou calendário embutido no centro
-- **Representação**: Serviços mecânicos + agendamento digital
-- **Nome**: "Oficina" em branco + "Digital" em vermelho
-- **Fundo**: Preto ou cinza escuro para realçar contraste
-
-### Variações
-1. **Versão Horizontal**: Ícone à esquerda + texto
-2. **Versão Quadrada**: Apenas o ícone vermelho no fundo preto (para apps)
-3. **Versão Monocromática**: Para impressões em preto e branco
-
-*Assets disponíveis em: [`identity/logo/`](identity/logo/)*
-
----
-
-## 🧭 Slogan Oficial
-
-### **"Tecnologia simples para quem entende de carro."** 🚗
-
-Este slogan foi escolhido por:
-- **Conectar com o público**: Fala diretamente com mecânicos e proprietários de oficinas
-- **Demonstrar respeito**: Reconhece a expertise do profissional da área
-- **Simplificar a proposta**: Deixa claro que a tecnologia não vai complicar, vai facilitar
-- **Criar identificação**: O público-alvo se vê representado na mensagem
-
-### Aplicações do Slogan
-- **Materiais promocionais**: Sempre acompanhando o logo
-- **Assinatura de e-mail**: Como fechamento das comunicações
-- **App Store**: Na descrição do aplicativo
-- **Website**: Como subtítulo principal
-- **Redes sociais**: Em posts institucionais
-
----
-
-## 🧱 Estilo Visual
-
-### Diretrizes de Layout
-- **Fundo**: Layout limpo com fundo escuro
-- **Destaques**: Elementos vermelhos em destaque
-- **Botões**: Grandes e contrastantes com rótulos claros
-  - Exemplos: "Agendar", "Registrar serviço", "Ver histórico"
-- **Ícones**: Simples e ilustrativos (engrenagem, calendário, cliente, carro)
-- **Tipografia**: Tamanho levemente maior para melhor leitura em tablets e smartphones
-
-### Princípios de Design
-1. **Simplicidade**: Interface intuitiva para usuários de diferentes idades
-2. **Contraste**: Alto contraste para melhor legibilidade
-3. **Acessibilidade**: Elementos grandes e textos claros
-4. **Consistência**: Padrões visuais uniformes em toda a aplicação
-
----
-
-## 📁 Estrutura de Assets
+## 📁 Estrutura do Projeto
 
 ```
 brand/
-├── identity/
-│   ├── colors/
-│   │   ├── palette.json           # Cores originais (legacy)
-│   │   └── palette-material3.json # Sistema de cores Material 3 ✅
-│   ├── logo/
-│   │   ├── logo-horizontal.svg
-│   │   ├── logo-square.svg
-│   │   └── logo-monochrome.svg
-│   ├── typography/
-│   │   └── fonts.json             # Tipografia em JSON
-│   ├── design-system.css          # CSS Variables (DEPRECADO - não usar)
-│   ├── material3-tokens.css       # Material 3 CSS tokens ✅ USAR ESTE
-│   └── brand-guidelines.md
-├── assets/
-│   ├── icons/
-│   │   ├── engrenagem.svg         # Ícone de serviços
-│   │   ├── calendario.svg         # Ícone de agendamentos
-│   │   ├── cliente.svg            # Ícone de clientes
-│   │   └── carro.svg              # Ícone de veículos
-│   ├── images/
-│   │   └── brand-showcase.png
-│   └── css-components.md          # Classes CSS prontas (legacy)
-└── docs/
-    ├── usage-examples.md          # Exemplos visuais
-    ├── quick-start-developers.md  # Guia rápido (legacy)
-    ├── material3-integration.md   # Guia Material 3 ✅
-    ├── material3-theme-setup.md   # Setup tema Material UI ✅
-    ├── material3-migration-guide.md # Migração para Material 3 ✅
-    └── brand-checklist.md         # Checklist de qualidade
+├── assets/                    # Assets visuais da marca
+│   ├── icons/                # Ícones SVG específicos da Oficina Digital
+│   └── images/               # Imagens, logos e ilustrações
+├── identity/                 # Sistema de identidade visual
+│   ├── colors/               # Paletas de cores e tokens
+│   │   └── palette-material3.json
+│   └── css/                  # Tokens CSS e temas
+│       └── material3-tokens.css
+└── docs/                     # Documentação técnica
+    ├── material3-setup.md    # Setup completo do Material UI
+    ├── material3-integration.md  # Guia de migração
+    └── README.md             # Este arquivo
 ```
 
+## 🎯 Paleta de Cores
+
+### **Cores Principais**
+- **Primary**: `#1976D2` - Azul confiável para elementos principais
+- **Secondary**: `#FFA726` - Laranja energético para CTAs e destaques  
+- **Tertiary**: `#66BB6A` - Verde para status positivos e sucessos
+- **Error**: `#F44336` - Vermelho para erros e alertas críticos
+
+### **Cores Neutras**
+- **Background**: `#FAFAFA` - Fundo padrão claro
+- **Surface**: `#FFFFFF` - Superfícies (cards, modais)
+- **Text Primary**: `#212121` - Texto principal
+- **Text Secondary**: `#757575` - Texto secundário
+
+### **Significado das Cores**
+- **Azul**: Transmite confiabilidade e profissionalismo técnico
+- **Laranja**: Energia da indústria automotiva, urgência positiva
+- **Verde**: Confirmações, serviços concluídos, status positivos
+- **Vermelho**: Apenas para alertas críticos e erros importantes
+
+## 🚀 Início Rápido
+
+### **1. Instalar Dependências**
+```bash
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/icons-material @fontsource/roboto
+```
+
+### **2. Importar Tema**
+```jsx
+import { ThemeProvider } from '@mui/material/styles';
+import { CssBaseline } from '@mui/material';
+import oficinaTheme from './theme/oficinaTheme';
+import './brand/identity/css/material3-tokens.css';
+
+function App() {
+  return (
+    <ThemeProvider theme={oficinaTheme}>
+      <CssBaseline />
+      {/* Sua aplicação */}
+    </ThemeProvider>
+  );
+}
+```
+
+### **3. Usar Componentes**
+```jsx
+import { Button, Card, CardContent } from '@mui/material';
+
+// Botão principal
+<Button variant="contained" color="primary">
+  Agendar Serviço
+</Button>
+
+// Card com tema aplicado
+<Card>
+  <CardContent>
+    Conteúdo do agendamento
+  </CardContent>
+</Card>
+```
+
+## 🎨 Componentes Específicos
+
+### **Status de Agendamentos**
+```jsx
+// Status coloridos por tipo
+<Chip 
+  label="Agendado" 
+  color="info"
+/>
+<Chip 
+  label="Em Andamento" 
+  color="warning"
+/>
+<Chip 
+  label="Concluído" 
+  color="success"
+/>
+```
+
+### **Botões de Ação**
+```jsx
+// CTA principal - laranja energético
+<Button variant="contained" color="secondary">
+  Novo Agendamento
+</Button>
+
+// Ação primária - azul confiável  
+<Button variant="contained" color="primary">
+  Iniciar Serviço
+</Button>
+
+// Sucesso - verde positivo
+<Button variant="contained" color="success">
+  Concluir
+</Button>
+```
+
+### **Iconografia Semântica**
+```jsx
+import { 
+  CalendarToday,    // Agendamentos
+  Build,           // Serviços
+  DirectionsCar,   // Veículos
+  Person,          // Clientes
+  Settings,        // Configurações
+} from '@mui/icons-material';
+```
+
+## 📱 Design Responsivo
+
+### **Breakpoints Oficina Digital**
+- **Mobile**: `0px - 767px` (70% dos usuários)
+- **Tablet**: `768px - 1023px` (5% dos usuários)  
+- **Desktop**: `1024px+` (25% dos usuários)
+
+### **Touch Targets**
+- **Mínimo**: 48px × 48px (WCAG AA)
+- **Recomendado**: 56px × 56px para mobile
+- **Espaçamento**: 8px entre elementos interativos
+
+### **Tipografia Responsiva**
+```css
+/* Mobile-first typography */
+h1 { font-size: 1.75rem; }  /* 28px */
+h2 { font-size: 1.5rem; }   /* 24px */
+body { font-size: 1rem; }   /* 16px - mínimo legível */
+
+@media (min-width: 768px) {
+  h1 { font-size: 2.5rem; } /* 40px */
+  h2 { font-size: 2rem; }   /* 32px */
+}
+```
+
+## 🌐 Acessibilidade (WCAG AA)
+
+### **Contraste de Cores**
+- ✅ **4.5:1** - Contraste mínimo (texto normal)
+- ✅ **3:1** - Contraste mínimo (texto grande)
+- ✅ **7:1** - Contraste enhanced (tema alto contraste)
+
+### **Navegação por Teclado**
+```jsx
+// Todos os elementos interativos são acessíveis
+<Button 
+  aria-label="Agendar serviço para Honda Civic"
+  tabIndex={0}
+  onKeyDown={handleKeyPress}
+>
+  Agendar
+</Button>
+```
+
+### **Screen Readers**
+```jsx
+// Estrutura semântica clara
+<main>
+  <h1>Agendamentos de Hoje</h1>
+  <section aria-label="Lista de agendamentos">
+    <article role="listitem">
+      <h2>Cliente: João Silva</h2>
+      {/* Conteúdo do agendamento */}
+    </article>
+  </section>
+</main>
+```
+
+## 🛠️ Desenvolvimento
+
+### **Configuração do Projeto**
+```javascript
+// vite.config.js
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      '@brand': '/brand',
+      '@components': '/src/components',
+    },
+  },
+});
+```
+
+### **Estrutura de Componentes**
+```
+src/
+├── components/
+│   ├── forms/
+│   │   └── AgendamentoForm.jsx
+│   ├── cards/
+│   │   └── AgendamentoCard.jsx
+│   └── navigation/
+│       └── MobileNavigation.jsx
+├── theme/
+│   └── oficinaTheme.js
+└── providers/
+    └── ThemeProvider.jsx
+```
+
+### **Testes Visuais**
+```jsx
+// Storybook para componentes
+export default {
+  title: 'Oficina/AgendamentoCard',
+  component: AgendamentoCard,
+};
+
+export const Agendado = () => (
+  <AgendamentoCard status="agendado" cliente="João Silva" />
+);
+
+export const EmAndamento = () => (
+  <AgendamentoCard status="em-andamento" cliente="Maria Santos" />
+);
+```
+
+## 🎭 Temas
+
+### **Tema Claro (Padrão)**
+- Ideal para uso diurno em oficinas bem iluminadas
+- Cores vibrantes e alto contraste
+- Background claro (#FAFAFA)
+
+### **Tema Escuro**
+- Para reduzir fadiga visual em trabalho noturno
+- Cores adaptadas para baixa luminosidade
+- Background escuro (#121212)
+
+### **Seletor de Tema**
+```jsx
+// Hook para alternar temas
+const { darkMode, toggleTheme } = useTheme();
+
+<IconButton onClick={toggleTheme}>
+  {darkMode ? <LightMode /> : <DarkMode />}
+</IconButton>
+```
+
+## 🌍 Contexto Brasileiro
+
+### **Linguagem e Tom**
+- **Terminologia técnica brasileira**: "agendamento", "serviço", "cliente"
+- **Tom amigável e direto**: "Pronto! Serviço agendado."
+- **Evitar jargão**: "Ops! Algo deu errado" vs "Error 500"
+
+### **UX para Mecânicos**
+- **Fluxos simples**: Máximo 3 cliques para qualquer ação
+- **Botões grandes**: Facilitar uso com dedos sujos/luvas
+- **Feedback visual claro**: Estados de loading, sucesso, erro
+- **Mobile-first**: 70% dos usuários usam celular
+
+## 📚 Documentação
+
+### **Para Desenvolvedores**
+- **[Setup Completo](docs/material3-setup.md)**: Configuração passo a passo
+- **[Guia de Integração](docs/material3-integration.md)**: Migração de projetos existentes
+
+### **Para Designers**
+- **[Paleta de Cores](identity/colors/palette-material3.json)**: Cores em formato JSON
+- **[Tokens CSS](identity/css/material3-tokens.css)**: Variáveis prontas para uso
+
+## 🤝 Contribuindo
+
+### **Adicionando Componentes**
+1. Seguir guidelines do Material Design 3
+2. Usar tokens CSS `--md-sys-color-*`  
+3. Incluir variants para tema claro/escuro
+4. Documentar uso e acessibilidade
+5. Adicionar testes visuais
+
+### **Modificando Cores**
+1. Atualizar `palette-material3.json`
+2. Regenerar tokens CSS
+3. Testar contraste em todos os temas
+4. Validar com ferramentas de acessibilidade
+
+### **Critérios de Qualidade**
+- ✅ WCAG AA compliance
+- ✅ Mobile-first responsive
+- ✅ Cross-browser compatibility  
+- ✅ Performance optimized
+- ✅ Semantic HTML structure
+
+## 🔗 Links Úteis
+
+- **[Material Design 3](https://m3.material.io/)**: Especificações oficiais
+- **[Material UI](https://mui.com/)**: Documentação do framework
+- **[Color Oracle](https://colororacle.org/)**: Simulador de daltonismo
+- **[WebAIM](https://webaim.org/resources/contrastchecker/)**: Validador de contraste
+- **[axe DevTools](https://www.deque.com/axe/)**: Teste de acessibilidade
+
+## 📈 Métricas de Sucesso
+
+### **Performance**
+- **Loading**: < 2.5s LCP
+- **Mobile Score**: > 90 (Lighthouse)
+- **Bundle Size**: < 500KB (gzipped)
+
+### **Acessibilidade**
+- **WCAG AA**: 100% compliance
+- **Keyboard Navigation**: Functional
+- **Screen Reader**: Compatible
+
+### **Usabilidade**
+- **Task Success Rate**: > 95%
+- **Time to Complete**: < 3 cliques
+- **User Satisfaction**: NPS > 50
+
 ---
 
-## 📋 Guidelines de Uso
-
-### ✅ Faça
-- Use as cores da paleta oficial
-- Mantenha o contraste adequado entre texto e fundo
-- Use as fontes especificadas para consistência
-- Respeite o espaçamento mínimo ao redor do logo
-
-### ❌ Evite
-- Alterar as proporções do logotipo
-- Usar cores fora da paleta oficial
-- Colocar o logo sobre fundos que comprometam a legibilidade
-- Usar fontes não especificadas nos materiais oficiais
-
----
-
-## 🎯 Público-Alvo
-
-**Primário**: Proprietários e funcionários de oficinas mecânicas
-- Idade: 25-60 anos
-- Características: Práticos, valorizam eficiência, podem ter resistência inicial à tecnologia
-- Necessidades: Organização, controle de agendamentos, gestão de clientes
-
-**Secundário**: Clientes das oficinas
-- Características: Buscam comodidade e transparência nos serviços
-- Necessidades: Facilidade para agendar, acompanhar serviços, receber atualizações
-
----
-
-## Para Desenvolvedores
-
-### Quick Start
-1. **Importe o CSS**: `@import url('../brand/identity/design-system.css');`
-2. **Use as variáveis do Copilot**: `var(--color-primary-red)`, `var(--font-heading)`, etc.
-3. **Consulte**: `docs/quick-start-developers.md` para exemplos práticos
-4. **Classes prontas**: `assets/css-components.md` tem componentes CSS completos
-
-### Integração com Copilot
-As instruções do GitHub Copilot referenciam estas variáveis específicas:
-- `--color-primary-red` para ações e destaques
-- `--color-neutral-black` para textos principais
-- `--font-heading` para títulos (Poppins)
-- `--font-body` para textos (Inter)
-
----
-
-## Contato
-
-Para dúvidas sobre o uso da marca ou solicitação de novos assets, entre em contato com a equipe de design.
-
----
-
-*© 2025 Anderson Soriano - Oficina Digital. Todos os direitos reservados.*
+**Lembre-se**: Este sistema de design serve **mecânicos reais** resolvendo **problemas reais**. Mantenha soluções simples, acessíveis e confiáveis! 🔧⚙️

@@ -1,73 +1,89 @@
 # Material Design 3 Integration Guide
 
-## Setup Rápido
+> Guia de Integração para Projetos Existentes
+
+Este documento orienta como integrar o Material Design 3 da Oficina Digital em projetos React existentes.
+
+## 🚀 Setup Rápido
 
 ### 1. Instalação
 ```bash
 npm install @mui/material @emotion/react @emotion/styled
-npm install @mui/icons-material # Para ícones
+npm install @mui/icons-material @fontsource/roboto
 ```
 
 ### 2. Tema Custom com Brand Colors
 ```typescript
-// src/theme/theme.ts
+// src/theme/oficinaTheme.ts
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#E53935', // --color-primary-red
-      dark: '#C62828',
-      light: '#FFEBEE',
+      main: '#1976D2', // Azul confiável
+      light: '#42A5F5',
+      dark: '#1565C0',
+      contrastText: '#FFFFFF',
+    },
+    secondary: {
+      main: '#FFA726', // Laranja energético
+      light: '#FFB74D',
+      dark: '#F57C00',
+      contrastText: '#000000',
+    },
+    success: {
+      main: '#66BB6A', // Verde positivo
+      light: '#81C784',
+      dark: '#4CAF50',
+    },
+    error: {
+      main: '#F44336',
+      light: '#EF5350',
+      dark: '#D32F2F',
     },
     background: {
-      default: '#F5F5F5', // --color-neutral-gray-light
+      default: '#FAFAFA',
       paper: '#FFFFFF',
     },
     text: {
-      primary: '#121212', // --color-neutral-black
-      secondary: '#9E9E9E', // --color-neutral-gray-medium
+      primary: '#212121',
+      secondary: '#757575',
     },
   },
   typography: {
     fontFamily: [
-      'Inter', // --font-body
+      'Inter',
       'Roboto',
       'Arial',
       'sans-serif'
     ].join(','),
     h1: {
-      fontFamily: 'Poppins, sans-serif', // --font-heading
+      fontFamily: 'Poppins, sans-serif',
       fontWeight: 800,
     },
     h2: {
       fontFamily: 'Poppins, sans-serif',
       fontWeight: 700,
     },
-    h3: {
-      fontFamily: 'Poppins, sans-serif', 
-      fontWeight: 600,
-    },
     button: {
       fontFamily: 'Inter, sans-serif',
       fontWeight: 500,
-      textTransform: 'none', // Manter case original
+      textTransform: 'none',
     },
   },
   components: {
-    // Customizações para atender mecânicos
     MuiButton: {
       styleOverrides: {
         root: {
-          minHeight: 48, // Material 3 standard para acessibilidade
-          borderRadius: 12, // Material 3 rounded corners
+          minHeight: 48,
+          borderRadius: 12,
         },
       },
     },
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 16, // Material 3 card radius
+          borderRadius: 16,
         },
       },
     },
@@ -82,7 +98,7 @@ export default theme;
 // src/App.tsx
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
-import theme from './theme/theme';
+import theme from './theme/oficinaTheme';
 
 function App() {
   return (
@@ -94,79 +110,65 @@ function App() {
 }
 ```
 
-## Componentes Principais
+## 🎨 Componentes Principais
 
-### Botões (seguindo UX para mecânicos)
-```typescript
-import { Button, Stack } from '@mui/material';
+### Botões (UX para mecânicos)
+```tsx
+import { Button } from '@mui/material';
 
 // Botão primário - ações principais
 <Button 
   variant="contained" 
   size="large"
-  sx={{ minHeight: 48 }} // Acessibilidade mobile
+  sx={{ minHeight: 48 }}
 >
   Agendar Serviço
 </Button>
 
 // Botão secundário
-<Button 
-  variant="outlined" 
-  size="large"
->
+<Button variant="outlined" size="large">
   Cancelar
 </Button>
 
-// Botão texto - ações menos importantes
+// Botão texto
 <Button variant="text">
   Ver Detalhes
 </Button>
 ```
 
 ### Cards para Agendamentos
-```typescript
+```tsx
 import { Card, CardContent, CardActions, Typography, Chip } from '@mui/material';
 
-/**
- * Component: AppointmentCard
- * Context: Display appointment for shop dashboard
- * Users: Mechanics (low-tech familiarity)
- * Design: Material 3 Card with brand theming
- */
-function AppointmentCard({ appointment }: Props) {
+function AgendamentoCard({ agendamento }) {
   return (
     <Card 
       variant="outlined"
       sx={{ 
         margin: 1,
-        '&:hover': { 
-          elevation: 4 // Material 3 elevation on hover
-        }
+        '&:hover': { elevation: 4 }
       }}
     >
       <CardContent>
-        <Typography variant="h6" component="h3" gutterBottom>
-          {appointment.serviceName}
+        <Typography variant="h6" gutterBottom>
+          {agendamento.servico}
         </Typography>
-        
         <Typography variant="body2" color="text.secondary">
-          {appointment.customerName}
+          {agendamento.cliente}
         </Typography>
-        
         <Chip 
-          label={appointment.status}
-          color={getStatusColor(appointment.status)}
+          label={agendamento.status}
+          color={getStatusColor(agendamento.status)}
           size="small"
           sx={{ mt: 1 }}
         />
       </CardContent>
-      
       <CardActions>
         <Button size="small" variant="contained">
-          Atualizar Status
+          Atualizar
         </Button>
         <Button size="small" variant="text">
-          Ver Detalhes
+          Detalhes
         </Button>
       </CardActions>
     </Card>
@@ -175,7 +177,7 @@ function AppointmentCard({ appointment }: Props) {
 ```
 
 ### Formulários
-```typescript
+```tsx
 import { TextField, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 // Campo de texto
@@ -185,26 +187,21 @@ import { TextField, FormControl, InputLabel, Select, MenuItem } from '@mui/mater
   fullWidth
   required
   sx={{ mb: 2 }}
-  helperText="Digite o nome completo"
 />
 
-// Select/Dropdown
+// Select
 <FormControl fullWidth sx={{ mb: 2 }}>
   <InputLabel>Tipo de Serviço</InputLabel>
-  <Select
-    value={serviceType}
-    label="Tipo de Serviço"
-    onChange={handleChange}
-  >
-    <MenuItem value="oil">Troca de Óleo</MenuItem>
-    <MenuItem value="brake">Freios</MenuItem>
-    <MenuItem value="tire">Pneus</MenuItem>
+  <Select value={servico} onChange={handleChange}>
+    <MenuItem value="oleo">Troca de Óleo</MenuItem>
+    <MenuItem value="freio">Freios</MenuItem>
+    <MenuItem value="pneu">Pneus</MenuItem>
   </Select>
 </FormControl>
 ```
 
-### Navigation para Mobile
-```typescript
+### Navegação Mobile
+```tsx
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import { CalendarToday, Build, Person, Settings } from '@mui/icons-material';
 
@@ -214,7 +211,7 @@ function MobileNavigation() {
   return (
     <BottomNavigation
       value={value}
-      onChange={(event, newValue) => setValue(newValue)}
+      onChange={(_, newValue) => setValue(newValue)}
       sx={{ 
         position: 'fixed', 
         bottom: 0, 
@@ -223,31 +220,19 @@ function MobileNavigation() {
         zIndex: 1000
       }}
     >
-      <BottomNavigationAction 
-        label="Agenda" 
-        icon={<CalendarToday />} 
-      />
-      <BottomNavigationAction 
-        label="Serviços" 
-        icon={<Build />} 
-      />
-      <BottomNavigationAction 
-        label="Clientes" 
-        icon={<Person />} 
-      />
-      <BottomNavigationAction 
-        label="Config" 
-        icon={<Settings />} 
-      />
+      <BottomNavigationAction label="Agenda" icon={<CalendarToday />} />
+      <BottomNavigationAction label="Serviços" icon={<Build />} />
+      <BottomNavigationAction label="Clientes" icon={<Person />} />
+      <BottomNavigationAction label="Config" icon={<Settings />} />
     </BottomNavigation>
   );
 }
 ```
 
-## Layout Responsivo
+## 📱 Layout Responsivo
 
 ### Container Principal
-```typescript
+```tsx
 import { Container, Grid, useTheme, useMediaQuery } from '@mui/material';
 
 function Dashboard() {
@@ -270,9 +255,24 @@ function Dashboard() {
 }
 ```
 
-## Status Colors (Semantic)
+### Breakpoints Material 3
 ```typescript
-// Helper function para cores de status
+// xs: 0px
+// sm: 600px  
+// md: 900px
+// lg: 1200px
+// xl: 1536px
+
+// Uso com useMediaQuery
+const isMobile = useMediaQuery(theme.breakpoints.down('md')); // < 900px
+const isTablet = useMediaQuery(theme.breakpoints.between('md', 'lg')); // 900px - 1200px
+const isDesktop = useMediaQuery(theme.breakpoints.up('lg')); // >= 1200px
+```
+
+## 🎨 Cores Semânticas
+
+### Status Helper
+```typescript
 function getStatusColor(status: string): 'default' | 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning' {
   switch (status) {
     case 'agendado': return 'info';
@@ -284,8 +284,8 @@ function getStatusColor(status: string): 'default' | 'primary' | 'secondary' | '
 }
 ```
 
-## Ícones Material
-```typescript
+### Ícones Material
+```tsx
 import { 
   CalendarToday,
   Build,
@@ -302,27 +302,206 @@ import {
 <Cancel color="error" />
 ```
 
-## Breakpoints Material 3
-```typescript
-// xs: 0px
-// sm: 600px  
-// md: 900px
-// lg: 1200px
-// xl: 1536px
+## 🚀 Migração Passo a Passo
 
-// Uso com useMediaQuery
-const isMobile = useMediaQuery(theme.breakpoints.down('md')); // < 900px
-const isTablet = useMediaQuery(theme.breakpoints.between('md', 'lg')); // 900px - 1200px
-const isDesktop = useMediaQuery(theme.breakpoints.up('lg')); // >= 1200px
+### 1. Auditoria do Projeto
+```bash
+# Listar componentes atuais
+find src -name "*.jsx" -o -name "*.js" | grep -i component
+
+# Identificar dependências UI
+grep -r "import.*from.*@mui\|material-ui\|antd\|chakra" src/
 ```
 
-## Acessibilidade Material 3
-- ✅ **Touch targets**: 48px mínimo (já incluído nos componentes)
-- ✅ **Focus visível**: Automático nos componentes Material
-- ✅ **ARIA labels**: Incluídos nos componentes
+### 2. Backup e Preparação
+```bash
+# Criar branch para migração
+git checkout -b feature/material3-integration
+
+# Backup dos estilos atuais
+cp -r src/styles src/styles.backup
+```
+
+### 3. Instalação
+```bash
+# Remover bibliotecas antigas
+npm uninstall @mui/material-v4 antd chakra-ui
+
+# Instalar Material UI v5
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/icons-material @mui/x-date-pickers
+```
+
+### 4. Provider com Tema
+```tsx
+// src/providers/ThemeProvider.tsx
+import React, { createContext, useContext, useState } from 'react';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
+import { CssBaseline } from '@mui/material';
+import { oficinaTheme, oficinaDarkTheme } from '../theme/oficinaTheme';
+
+const ThemeContext = createContext();
+
+export const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useTheme must be used within ThemeProvider');
+  }
+  return context;
+};
+
+export const ThemeProvider = ({ children }) => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+  };
+
+  const currentTheme = darkMode ? oficinaDarkTheme : oficinaTheme;
+
+  return (
+    <ThemeContext.Provider value={{ darkMode, toggleTheme }}>
+      <MuiThemeProvider theme={currentTheme}>
+        <CssBaseline />
+        {children}
+      </MuiThemeProvider>
+    </ThemeContext.Provider>
+  );
+};
+```
+
+### 5. Migração de Componentes
+
+#### Wrapper para Transição
+```tsx
+// src/components/migration/ButtonWrapper.tsx
+import { Button as MuiButton } from '@mui/material';
+
+const ButtonWrapper = ({ 
+  variant, 
+  color, 
+  children, 
+  legacy = false,
+  ...props 
+}) => {
+  if (legacy) {
+    return <OldButton variant={variant} {...props}>{children}</OldButton>;
+  }
+
+  const muiVariant = variant === 'primary' ? 'contained' : variant;
+  const muiColor = color === 'danger' ? 'error' : color;
+
+  return (
+    <MuiButton 
+      variant={muiVariant}
+      color={muiColor}
+      {...props}
+    >
+      {children}
+    </MuiButton>
+  );
+};
+```
+
+### 6. Testes da Migração
+
+#### Testes de Componentes
+```tsx
+// src/__tests__/components/AgendamentoForm.test.tsx
+import { render, screen } from '@testing-library/react';
+import { ThemeProvider } from '../providers/ThemeProvider';
+import AgendamentoForm from '../components/forms/AgendamentoForm';
+
+const renderWithProvider = (component) => {
+  return render(
+    <ThemeProvider>
+      {component}
+    </ThemeProvider>
+  );
+};
+
+describe('AgendamentoForm Migration', () => {
+  test('renders with Material UI theme', () => {
+    renderWithProvider(
+      <AgendamentoForm open={true} onClose={() => {}} />
+    );
+    
+    expect(screen.getByLabelText(/nome do cliente/i)).toBeInTheDocument();
+  });
+});
+```
+
+## ✅ Checklist de Migração
+
+### Planejamento
+- [ ] Auditoria de componentes existentes
+- [ ] Cronograma de migração definido
+- [ ] Backup do código atual
+- [ ] Estratégia de rollback definida
+
+### Setup
+- [ ] Material UI instalado
+- [ ] Tema Oficina Digital configurado
+- [ ] Provider global implementado
+- [ ] CSS tokens importados
+
+### Componentes
+- [ ] Botões migrados
+- [ ] Formulários migrados
+- [ ] Cards migrados
+- [ ] Navegação migrada
+- [ ] Layout responsivo atualizado
+
+### Qualidade
+- [ ] Testes unitários passando
+- [ ] Performance mantida/melhorada
+- [ ] Acessibilidade validada (WCAG AA)
+- [ ] Compatibilidade cross-browser
+
+## 🌐 Acessibilidade Material 3
+
+- ✅ **Touch targets**: 48px mínimo (automático)
+- ✅ **Focus visível**: Built-in nos componentes
+- ✅ **ARIA labels**: Incluídos automaticamente
 - ✅ **Color contrast**: Material 3 garante 4.5:1 mínimo
 - ✅ **Screen reader**: Semântica HTML correta
 
+## 🎯 Problemas Comuns
+
+### Conflitos de CSS
+```css
+/* Desabilitar estilos antigos */
+.legacy-disabled {
+  /* CSS antigo comentado */
+}
+
+/* Namespace para novos estilos */
+.mui-oficina {
+  /* Estilos Material UI */
+}
+```
+
+### Performance
+```tsx
+// Lazy loading
+const AgendamentoForm = React.lazy(() => 
+  import('../components/forms/AgendamentoForm')
+);
+
+// Memoização
+const AgendamentoCard = React.memo(({ agendamento }) => {
+  // Componente...
+});
+```
+
+### Bundle Size
+```bash
+# Analisar bundle
+npm install --save-dev webpack-bundle-analyzer
+npm run build
+npx webpack-bundle-analyzer build/static/js/*.js
+```
+
 ---
 
-*Material Design 3 + Brand Oficina Digital = UX profissional e acessível para mecânicos brasileiros*
+**Resultado**: Migração suave para Material Design 3 mantendo funcionalidade e melhorando UX/DX da Oficina Digital! 🎨✨

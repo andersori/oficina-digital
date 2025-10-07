@@ -1,82 +1,182 @@
 {
-  "source": {
-    "primary": "#E53935",
-    "description": "Cor principal da marca Oficina Digital - Vermelho característico"
+  "name": "Oficina Digital - Material Design 3 Palette",
+  "description": "Paleta de cores profissional para plataforma de gestão de oficinas mecânicas",
+  "version": "1.0.0",
+  "framework": "React + Material UI + Material Design 3",
+  "brandIdentity": {
+    "name": "Oficina Digital",
+    "sector": "Automotive Services Management",
+    "targetAudience": "Brazilian mechanics and auto shop owners (25-60 years)",
+    "brandValues": [
+      "reliability",
+      "simplicity",
+      "trust",
+      "efficiency"
+    ]
+  },
+  "colorSystem": {
+    "primary": {
+      "main": "#1976D2",
+      "light": "#42A5F5",
+      "dark": "#1565C0",
+      "contrastText": "#FFFFFF",
+      "description": "Azul confiável para elementos principais - transmite profissionalismo"
+    },
+    "secondary": {
+      "main": "#FFA726",
+      "light": "#FFB74D",
+      "dark": "#F57C00",
+      "contrastText": "#000000",
+      "description": "Laranja energético para CTAs e destaques - cor da indústria automotiva"
+    },
+    "tertiary": {
+      "main": "#66BB6A",
+      "light": "#81C784",
+      "dark": "#4CAF50",
+      "contrastText": "#FFFFFF",
+      "description": "Verde para status positivos - serviços concluídos"
+    },
+    "error": {
+      "main": "#F44336",
+      "light": "#EF5350",
+      "dark": "#D32F2F",
+      "contrastText": "#FFFFFF",
+      "description": "Vermelho para erros e alertas críticos"
+    },
+    "warning": {
+      "main": "#FF9800",
+      "light": "#FFB74D",
+      "dark": "#F57C00",
+      "contrastText": "#000000",
+      "description": "Laranja para avisos e status em andamento"
+    },
+    "info": {
+      "main": "#2196F3",
+      "light": "#64B5F6",
+      "dark": "#1976D2",
+      "contrastText": "#FFFFFF",
+      "description": "Azul para informações e notificações"
+    },
+    "success": {
+      "main": "#4CAF50",
+      "light": "#81C784",
+      "dark": "#388E3C",
+      "contrastText": "#FFFFFF",
+      "description": "Verde para confirmações e sucessos"
+    }
+  },
+  "neutrals": {
+    "background": {
+      "default": "#FAFAFA",
+      "paper": "#FFFFFF"
+    },
+    "text": {
+      "primary": "#212121",
+      "secondary": "#757575",
+      "disabled": "#BDBDBD"
+    },
+    "divider": "#E0E0E0",
+    "action": {
+      "active": "#424242",
+      "hover": "#F5F5F5",
+      "selected": "#E3F2FD",
+      "disabled": "#BDBDBD",
+      "disabledBackground": "#EEEEEE"
+    }
+  },
+  "materialTokens": {
+    "description": "Mapeamento para tokens CSS do Material Design 3",
+    "tokens": {
+      "--md-sys-color-primary": "#1976D2",
+      "--md-sys-color-on-primary": "#FFFFFF",
+      "--md-sys-color-primary-container": "#E3F2FD",
+      "--md-sys-color-on-primary-container": "#0D47A1",
+      "--md-sys-color-secondary": "#FFA726",
+      "--md-sys-color-on-secondary": "#000000",
+      "--md-sys-color-secondary-container": "#FFF3E0",
+      "--md-sys-color-on-secondary-container": "#E65100",
+      "--md-sys-color-tertiary": "#66BB6A",
+      "--md-sys-color-on-tertiary": "#FFFFFF",
+      "--md-sys-color-tertiary-container": "#E8F5E8",
+      "--md-sys-color-on-tertiary-container": "#2E7D32",
+      "--md-sys-color-error": "#F44336",
+      "--md-sys-color-on-error": "#FFFFFF",
+      "--md-sys-color-error-container": "#FFEBEE",
+      "--md-sys-color-on-error-container": "#B71C1C",
+      "--md-sys-color-background": "#FAFAFA",
+      "--md-sys-color-on-background": "#212121",
+      "--md-sys-color-surface": "#FFFFFF",
+      "--md-sys-color-on-surface": "#212121",
+      "--md-sys-color-surface-variant": "#F5F5F5",
+      "--md-sys-color-on-surface-variant": "#424242",
+      "--md-sys-color-outline": "#BDBDBD",
+      "--md-sys-color-outline-variant": "#E0E0E0"
+    }
   },
   "schemes": {
     "light": {
-      "primary": "#E53935",
+      "primary": "#1976D2",
       "onPrimary": "#FFFFFF",
-      "primaryContainer": "#FFEBEE",
-      "onPrimaryContainer": "#C62828",
-      
-      "secondary": "#424242",
-      "onSecondary": "#FFFFFF",
-      "secondaryContainer": "#F5F5F5",
-      "onSecondaryContainer": "#121212",
-      
-      "tertiary": "#2196F3",
+      "primaryContainer": "#E3F2FD",
+      "onPrimaryContainer": "#0D47A1",
+      "secondary": "#FFA726",
+      "onSecondary": "#000000",
+      "secondaryContainer": "#FFF3E0",
+      "onSecondaryContainer": "#E65100",
+      "tertiary": "#66BB6A",
       "onTertiary": "#FFFFFF",
-      "tertiaryContainer": "#E3F2FD",
-      "onTertiaryContainer": "#0D47A1",
-      
+      "tertiaryContainer": "#E8F5E8",
+      "onTertiaryContainer": "#2E7D32",
       "error": "#F44336",
       "onError": "#FFFFFF",
       "errorContainer": "#FFEBEE",
-      "onErrorContainer": "#C62828",
-      
-      "background": "#FFFFFF",
-      "onBackground": "#121212",
-      "surface": "#F5F5F5",
-      "onSurface": "#121212",
-      "surfaceVariant": "#E0E0E0",
+      "onErrorContainer": "#B71C1C",
+      "background": "#FAFAFA",
+      "onBackground": "#212121",
+      "surface": "#FFFFFF",
+      "onSurface": "#212121",
+      "surfaceVariant": "#F5F5F5",
       "onSurfaceVariant": "#424242",
-      "surfaceTint": "#E53935",
-      
-      "outline": "#9E9E9E",
+      "surfaceTint": "#1976D2",
+      "outline": "#BDBDBD",
       "outlineVariant": "#E0E0E0",
       "shadow": "#000000",
       "scrim": "#000000",
       "inverseSurface": "#121212",
       "inverseOnSurface": "#FFFFFF",
-      "inversePrimary": "#FFCDD2"
+      "inversePrimary": "#90CAF9"
     },
     "dark": {
-      "primary": "#FFCDD2",
-      "onPrimary": "#C62828",
-      "primaryContainer": "#B71C1C",
-      "onPrimaryContainer": "#FFEBEE",
-      
-      "secondary": "#BDBDBD",
-      "onSecondary": "#121212",
-      "secondaryContainer": "#424242",
-      "onSecondaryContainer": "#F5F5F5",
-      
-      "tertiary": "#90CAF9",
-      "onTertiary": "#0D47A1",
-      "tertiaryContainer": "#1976D2",
-      "onTertiaryContainer": "#E3F2FD",
-      
+      "primary": "#90CAF9",
+      "onPrimary": "#0D47A1",
+      "primaryContainer": "#1565C0",
+      "onPrimaryContainer": "#E3F2FD",
+      "secondary": "#FFCC02",
+      "onSecondary": "#CC8F00",
+      "secondaryContainer": "#B8860B",
+      "onSecondaryContainer": "#FFF3E0",
+      "tertiary": "#A5D6A7",
+      "onTertiary": "#2E7D32",
+      "tertiaryContainer": "#4CAF50",
+      "onTertiaryContainer": "#E8F5E8",
       "error": "#FFCDD2",
-      "onError": "#C62828",
-      "errorContainer": "#B71C1C",
+      "onError": "#B71C1C",
+      "errorContainer": "#D32F2F",
       "onErrorContainer": "#FFEBEE",
-      
       "background": "#121212",
       "onBackground": "#FFFFFF",
       "surface": "#1E1E1E",
       "onSurface": "#FFFFFF",
       "surfaceVariant": "#424242",
       "onSurfaceVariant": "#BDBDBD",
-      "surfaceTint": "#FFCDD2",
-      
+      "surfaceTint": "#90CAF9",
       "outline": "#757575",
       "outlineVariant": "#424242",
       "shadow": "#000000",
       "scrim": "#000000",
       "inverseSurface": "#F5F5F5",
       "inverseOnSurface": "#121212",
-      "inversePrimary": "#E53935"
+      "inversePrimary": "#1976D2"
     }
   },
   "semantic": {
@@ -95,16 +195,16 @@
   },
   "states": {
     "hover": {
-      "primary": "#C62828",
-      "secondary": "#616161"
+      "primary": "#1565C0",
+      "secondary": "#F57C00"
     },
     "pressed": {
-      "primary": "#B71C1C",
-      "secondary": "#424242"
+      "primary": "#0D47A1",
+      "secondary": "#E65100"
     },
     "focused": {
-      "primary": "#E53935",
-      "secondary": "#424242"
+      "primary": "#1976D2",
+      "secondary": "#FFA726"
     },
     "disabled": {
       "primary": "#E0E0E0",
@@ -119,10 +219,45 @@
     "outline": "Bordas, divisores, contornos de campos",
     "background": "Fundo principal da aplicação"
   },
-  "brand_mapping": {
-    "oficina_red": "primary",
-    "oficina_black": "onSurface",
-    "oficina_light_gray": "surface",
-    "oficina_medium_gray": "outline"
+  "themes": {
+    "light": {
+      "description": "Tema claro padrão - ideal para ambientes bem iluminados",
+      "usage": "Tema principal para mecânicos trabalhando durante o dia"
+    },
+    "dark": {
+      "description": "Tema escuro - reduz fadiga visual",
+      "usage": "Para trabalho noturno ou ambientes com pouca luz"
+    }
+  },
+  "accessibility": {
+    "wcag": "AA",
+    "contrastRatios": {
+      "normal": "4.5:1",
+      "large": "3:1",
+      "enhanced": "7:1"
+    },
+    "colorBlindness": {
+      "tested": true,
+      "variants": [
+        "protanopia",
+        "deuteranopia",
+        "tritanopia"
+      ]
+    }
+  },
+  "usageGuidelines": {
+    "primary": "Use para botões principais, links e elementos de navegação",
+    "secondary": "Use para CTAs secundários, badges e elementos de destaque",
+    "tertiary": "Use para status positivos, confirmações e elementos de sucesso",
+    "error": "Use apenas para erros críticos e alertas de perigo",
+    "warning": "Use para avisos importantes e status em progresso",
+    "info": "Use para informações gerais e dicas",
+    "success": "Use para confirmações e status concluídos"
+  },
+  "implementation": {
+    "muiTheme": "Usar createTheme() do Material UI",
+    "cssVariables": "Aplicar tokens CSS customizados",
+    "components": "Personalizar componentes MUI com tema",
+    "documentation": "Ver brand/docs/material3-setup.md"
   }
 }

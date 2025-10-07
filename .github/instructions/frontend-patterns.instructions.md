@@ -33,7 +33,6 @@ export function AppointmentCard({ appointment }: Props) {
 - **Components**: Use `@mui/material` with Material 3 theming
 - **Theme**: Custom theme with Oficina Digital brand colors
 - **Typography**: Material 3 scale with Poppins/Inter fonts
-- **Reference**: `brand/docs/material3-integration.md` for setup
 
 ## State Management Patterns
 - **Use**: Context API + React Query for data fetching
@@ -83,8 +82,6 @@ function ResponsiveComponent() {
   );
 }
 ```
-
-**Reference**: Material 3 responsive guidelines + `brand/identity/design-system.css` for brand spacing.
 
 ## Performance Requirements
 - **Lazy loading**: For routes and heavy components

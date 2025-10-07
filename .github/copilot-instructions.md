@@ -4,11 +4,10 @@
 **Oficina Digital** is a SaaS platform for auto repair shop management in Brazil, focusing on appointment scheduling and service tracking. The target users are **mechanics and shop owners (25-60 years) with low-to-medium tech familiarity**.
 
 ## Architecture Overview
-- **Monorepo structure**: `app/frontend` (React/TypeScript + Material 3) + `app/backend` (Kotlin/Spring Boot)
+- **Monorepo structure**: `app/frontend` (React + Vite + Material Design 3) + `app/backend` (Kotlin/Spring Boot)
 - **Design system**: Material Design 3 with Oficina Digital brand customization
 - **UI Library**: Material UI (@mui/material) with custom theming
-- **Brand assets**: Centralized in `brand/` with design tokens
-- **AI context**: Comprehensive documentation in `.ai/` directory
+- **Build tool**: Vite for fast development and optimized builds
 - **Infrastructure**: Docker containers, Terraform for AWS deployment
 
 ## Key Development Principles
@@ -19,21 +18,22 @@
 - **Language**: Portuguese terminology - use "agendamento" (not "booking"), "serviço" (not "OS")
 - **Error messages**: Friendly and actionable, never technical jargon
 
-### 2. Material Design 3 + Brand Integration
-Use Material Design 3 components with Oficina Digital brand theming:
+### 2. Material Design 3
+Use Material UI components with Oficina Digital brand theming:
 - **Components**: Material UI (@mui/material) with custom theme
 - **Colors**: Brand colors mapped to Material 3 semantic tokens
-  - `--color-primary-red` → Material 3 `primary` color role
-  - `--color-neutral-black` → Material 3 `surface` tokens
-- **Typography**: Material 3 scale with brand fonts
-  - Poppins for display/headline scales
-  - Inter for body/label scales
+  - `--md-sys-color-primary` → #1976D2 (azul confiável)
+  - `--md-sys-color-secondary` → #FFA726 (laranja energético)
+  - `--md-sys-color-tertiary` → #66BB6A (verde positivo)
+  - `--md-sys-color-error` → #F44336 (vermelho de alerta)
+- **Typography**: Material 3 scale with Roboto font family
 - **Accessibility**: Material 3 built-in WCAG AA compliance
 
 **Reference files**:
-- Color mapping: `brand/identity/colors/palette.json`
-- Typography integration: `brand/identity/typography/fonts.json` 
-- Material 3 setup: `brand/docs/material3-integration.md`
+- Color mapping: `brand/identity/colors/palette-material3.json`
+- CSS tokens: `brand/identity/css/material3-tokens.css` 
+- Setup guide: `brand/docs/material3-setup.md`
+- Migration guide: `brand/docs/material3-integration.md`
 
 ### 3. Mobile-First Responsive Design
 - **Priority**: Mobile (70%) > Desktop (25%) > Tablet (5%)
@@ -115,18 +115,24 @@ Use Material Design 3 components with Oficina Digital brand theming:
 
 ## Quick Reference Commands
 ```bash
-# Project setup (when implemented)
-npm run dev          # Start frontend development
-./gradlew bootRun    # Start backend development
-docker-compose up    # Full local environment
+# Project setup
+npm run dev       # Start frontend development (Vite)
+./gradlew bootRun # Start backend development
+docker-compose up # Full local environment
+
+# React + Vite specific
+npm run build     # Production build
+npm run preview   # Preview production build
+npm test          # Run unit tests (Vitest)
+npm run lint      # ESLint code checking
+npm run format    # Prettier code formatting
 ```
 
 ## File Priorities
 When implementing features, focus on:
 1. Core user flows in `app/frontend/src/`
 2. API endpoints in `app/backend/src/`
-3. Design system consistency with `brand/` assets
-4. Mobile-responsive components
+3. Mobile-responsive components
 
 ---
 *This project serves real mechanics solving real problems. Keep solutions simple, accessible, and reliable.*
