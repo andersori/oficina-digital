@@ -27,7 +27,7 @@ import {
   ViewDay,
   FilterList,
 } from '@mui/icons-material';
-import { addWeeks, subWeeks, addDays, subDays, format } from 'date-fns';
+import { addWeeks, subWeeks, addDays, subDays, format, startOfWeek, endOfWeek } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { useAppContext } from '../../contexts/AppContext';
 import { Header } from '../shared/Header';
@@ -40,6 +40,10 @@ export const Dashboard: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [filterMenuOpen, setFilterMenuOpen] = useState(false);
+
+  const weekStart = startOfWeek(selectedDate, { weekStartsOn: 1 });
+  const weekEnd = endOfWeek(selectedDate, { weekStartsOn: 1 });
+  const weekDisplay = `${format(weekStart, "d 'de' MMM", { locale: ptBR })} — ${format(weekEnd, "d 'de' MMM yyyy", { locale: ptBR })}`;
 
   const handlePrevious = () => {
     if (viewMode === 'week') {
@@ -74,9 +78,9 @@ export const Dashboard: React.FC = () => {
     <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column', bgcolor: 'background.default' }}>
       <Header />
 
-      <Container 
-        maxWidth="xl" 
-        sx={{ 
+      <Container
+        maxWidth="xl"
+        sx={{
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
@@ -97,13 +101,6 @@ export const Dashboard: React.FC = () => {
           >
             {/* Date Navigation */}
             <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'wrap' }}>
-              <IconButton
-                onClick={handlePrevious}
-                sx={{ minWidth: 48, minHeight: 48 }}
-                aria-label="Anterior"
-              >
-                <ChevronLeft />
-              </IconButton>
 
               <Button
                 variant="outlined"
@@ -113,6 +110,14 @@ export const Dashboard: React.FC = () => {
               >
                 Filtros
               </Button>
+
+              <IconButton
+                onClick={handlePrevious}
+                sx={{ minWidth: 48, minHeight: 48 }}
+                aria-label="Anterior"
+              >
+                <ChevronLeft />
+              </IconButton>
 
               <Button
                 variant="outlined"
@@ -134,7 +139,7 @@ export const Dashboard: React.FC = () => {
               <Box sx={{ ml: 2, display: { xs: 'none', sm: 'block' } }}>
                 <Typography variant="h6" sx={{ fontWeight: 600 }}>
                   {viewMode === 'week'
-                    ? format(selectedDate, "MMMM 'de' yyyy", { locale: ptBR })
+                    ? weekDisplay
                     : format(selectedDate, "d 'de' MMMM 'de' yyyy", { locale: ptBR })}
                 </Typography>
               </Box>
@@ -164,9 +169,7 @@ export const Dashboard: React.FC = () => {
           {/* Mobile date display */}
           {isMobile && (
             <Typography variant="subtitle1" sx={{ mt: 2, fontWeight: 600, textAlign: 'center' }}>
-              {viewMode === 'week'
-                ? format(selectedDate, "MMMM 'de' yyyy", { locale: ptBR })
-                : format(selectedDate, "d 'de' MMMM 'de' yyyy", { locale: ptBR })}
+              {viewMode === 'week' ? weekDisplay : format(selectedDate, "d 'de' MMMM 'de' yyyy", { locale: ptBR })}
             </Typography>
           )}
         </Paper>
