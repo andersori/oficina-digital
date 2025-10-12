@@ -234,5 +234,49 @@ export const mockAppointments: Appointment[] = [
     branch: "Zona Sul",
     duration: 45,
     date: new Date(Date.now() - 86400000).toISOString().split('T')[0] // Yesterday
+  },
+  {
+    id: 21,
+    time: "08:00",
+    client: "Sérgio Pereira",
+    vehicle: "Kia Picanto - HJK-1111",
+    service: "Troca de óleo",
+    status: "agendado",
+    branch: "Centro",
+    duration: 30,
+    date: new Date(Date.now() - 86400000).toISOString().split('T')[0]
+  },
+  {
+    id: 22,
+    time: "08:00",
+    client: "Roberta Mello",
+    vehicle: "Honda HR-V - LMN-2222",
+    service: "Alinhamento",
+    status: "agendado",
+    branch: "Centro",
+    duration: 45,
+    date: new Date(Date.now() - 86400000).toISOString().split('T')[0]
+  },
+  {
+    id: 23,
+    time: "08:30",
+    client: "Gustavo Alves",
+    vehicle: "Fiat Toro - OPQ-3333",
+    service: "Troca de filtro de ar",
+    status: "agendado",
+    branch: "Centro",
+    duration: 20,
+    date: new Date(Date.now() - 86400000).toISOString().split('T')[0]
+  },
+  {
+    id: 24,
+    time: "08:00",
+    client: "Larissa Pinto",
+    vehicle: "Chevrolet Tracker - RST-4444",
+    service: "Revisão rápida",
+    status: "agendado",
+    branch: "Centro",
+    duration: 20,
+    date: new Date(Date.now() - 86400000).toISOString().split('T')[0]
   }
 ];

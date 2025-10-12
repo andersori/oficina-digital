@@ -17,6 +17,11 @@ import {
   DialogContent,
   DialogActions,
   Button,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemButton,
+  Chip,
 } from '@mui/material';
 import { format, startOfWeek, addDays, isSameDay, addMinutes } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
@@ -27,9 +32,27 @@ export const WeekView: React.FC = () => {
   const { appointments, selectedDate, setSelectedDate, setViewMode, filters } = useAppContext();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const inlineCount = isMobile ? 1 : 2;
+
+  const getStatusMainColor = (status: string) => {
+    switch (status) {
+      case 'agendado':
+        return theme.palette.primary.main;
+      case 'em-andamento':
+        return theme.palette.warning.main;
+      case 'concluido':
+        return theme.palette.success.main;
+      case 'atrasado':
+        return theme.palette.error.main;
+      default:
+        return theme.palette.text.primary;
+    }
+  };
 
   const weekStart = startOfWeek(selectedDate, { locale: ptBR });
   const weekDays = Array.from({ length: 7 }, (_, i) => addDays(weekStart, i));
+  const weekCols: (Date | null)[] = [null, ...weekDays];
+
 
   // Time slots: 30-minute slots from 08:00 to 17:30 (inclusive)
   const startHour = 8;
@@ -43,6 +66,9 @@ export const WeekView: React.FC = () => {
 
   const [selectedAppointment, setSelectedAppointment] = useState<Appointment | null>(null);
   const [detailsOpen, setDetailsOpen] = useState(false);
+  const [slotDialogOpen, setSlotDialogOpen] = useState(false);
+  const [slotDialogAppointments, setSlotDialogAppointments] = useState<Appointment[] | null>(null);
+  const [slotDialogTitle, setSlotDialogTitle] = useState<string>('');
 
   const openDetails = (app: Appointment) => {
     setSelectedAppointment(app);
@@ -54,6 +80,19 @@ export const WeekView: React.FC = () => {
     setSelectedAppointment(null);
   };
 
+  const openSlotDialog = (day: Date | null, slotLabel: string, apps: Appointment[]) => {
+    if (!day) return;
+    setSlotDialogTitle(`${format(day, "d 'de' MMMM", { locale: ptBR })} • ${slotLabel}`);
+    setSlotDialogAppointments(apps);
+    setSlotDialogOpen(true);
+  };
+
+  const closeSlotDialog = () => {
+    setSlotDialogOpen(false);
+    setSlotDialogAppointments(null);
+    setSlotDialogTitle('');
+  };
+
   const filterAppointments = (apps: Appointment[]) => {
     return apps.filter((app) => {
       if (filters.branch !== 'todos' && app.branch !== filters.branch) return false;
@@ -63,7 +102,8 @@ export const WeekView: React.FC = () => {
     });
   };
 
-  const getAppointmentsForDay = (day: Date) => {
+  const getAppointmentsForDay = (day: Date | null) => {
+    if (!day) return [];
     const dayStr = format(day, 'yyyy-MM-dd');
     const dayAppointments = appointments.filter((app) => app.date === dayStr);
     return filterAppointments(dayAppointments);
@@ -85,52 +125,6 @@ export const WeekView: React.FC = () => {
         flexDirection: 'column',
       }}
     >
-      {/* Grid header: first column for time labels, then 7 day headers */}
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: '80px repeat(7, 1fr)',
-          alignItems: 'center',
-          gap: 1,
-          pb: 1,
-          position: 'sticky',
-          top: 0,
-          zIndex: (theme) => (theme.zIndex.appBar || 1200) + 2,
-          backgroundColor: 'background.paper',
-          borderBottom: '1px solid',
-          borderColor: 'divider',
-          borderTopLeftRadius: (theme) => `${Number(theme.shape.borderRadius) * 1.5}px`,
-          borderTopRightRadius: (theme) => `${Number(theme.shape.borderRadius) * 1.5}px`,
-          overflow: 'hidden',
-          boxShadow: (theme) => theme.shadows?.[1] || 'none',
-        }}
-      >
-        <Box sx={{ position: 'sticky', left: 0, zIndex: (theme) => (theme.zIndex.appBar || 1200) + 1, backgroundColor: 'background.paper', borderRight: '1px solid', borderColor: 'divider', borderTopLeftRadius: (theme) => `${Number(theme.shape.borderRadius) * 1.5}px` }} />
-        {weekDays.map((day, idx) => (
-          <Box
-            key={idx}
-            sx={{
-              textAlign: 'center',
-              p: 1,
-              cursor: 'pointer',
-            }}
-            onClick={() => handleDayClick(day)}
-            role="button"
-            aria-label={`Ver dia ${format(day, "d 'de' MMMM", { locale: ptBR })}`}
-          >
-            <Typography variant="caption" sx={{ textTransform: 'uppercase', fontWeight: 600, color: isToday(day) ? 'primary.main' : 'text.secondary' }}>
-              {format(day, 'EEE', { locale: ptBR })}
-            </Typography>
-            <Typography variant="h6" sx={{ fontWeight: 700 }}>
-              {format(day, 'd')}
-            </Typography>
-            <Typography variant="caption" color="text.secondary">
-              {format(day, 'MMM', { locale: ptBR })}
-            </Typography>
-          </Box>
-        ))}
-      </Box>
-
       {/* Grid body: time labels + cells for each day/slot */}
       <Box
         sx={{
@@ -141,33 +135,103 @@ export const WeekView: React.FC = () => {
           overflowY: 'auto',
         }}
       >
-        {/* Time labels column (sticky) */}
-        <Box sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 1,
-          pr: 1,
-          position: 'sticky',
-          left: 0,
-          borderBottomLeftRadius: (theme) => `${Number(theme.shape.borderRadius) * 1.5}px`,
-          top: (theme) => (typeof theme.mixins?.toolbar?.minHeight === 'number' ? `${theme.mixins.toolbar.minHeight}px` : (theme.mixins?.toolbar?.minHeight || '64px')),
-          zIndex: (theme) => (theme.zIndex.appBar || 1200) + 1, backgroundColor: 'background.paper', borderRight: '1px solid', borderColor: 'divider'
-        }}>
-          {slots.map((slot, rowIndex) => (
-            <Box key={rowIndex} sx={{ height: isMobile ? 56 : 72, display: 'flex', alignItems: 'center', justifyContent: 'flex-end', pr: 1 }}>
-              <Typography variant="caption" color="text.secondary">
-                {format(slot, 'HH:mm')}
-              </Typography>
-            </Box>
-          ))}
-        </Box>
-
         {/* Day x Slot cells */}
-        {weekDays.map((day) => (
-          <Box key={day.toISOString()} sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-            {slots.map((slot, rowIndex) => {
+        {weekCols.map((day, idx) => (
+          <Box key={day ? day.toISOString() : 'time-labels'} sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+
+            {/* Grid header: first column for time labels, then 7 day headers */}
+            <Box
+              sx={{
+                display: 'grid',
+                alignItems: 'center',
+                gap: 1,
+                pb: 1,
+                position: 'sticky',
+                top: 0,
+                zIndex: (theme) => (theme.zIndex.appBar || 1200) + 2,
+                borderBottom: '1px solid',
+                borderColor: 'divider',
+                overflow: 'hidden',
+                boxShadow: (theme) => theme.shadows?.[1] || 'none',
+              }}
+            >
+              <Box sx={{
+                position: 'sticky',
+                left: 0,
+                zIndex: (theme) => (theme.zIndex.appBar || 1200) + 1,
+                borderRight: '1px solid',
+                borderColor: 'divider',
+                borderTopLeftRadius: (theme) => `${Number(theme.shape.borderRadius) * 1.5}px`
+              }} />
+              {idx === 0 ? (
+                /* placeholder cell to align with time labels column (no day header) */
+                <Box sx={{
+                  position: 'sticky',
+                  left: 0,
+                  minHeight: isMobile ? 100 : 140,           /* garante altura mínima do cabeçalho */
+                  zIndex: (theme) => (theme.zIndex.appBar || 1200) + 1,
+                  backgroundColor: 'background.paper',
+                  borderColor: 'divider',
+                  borderTopLeftRadius: (theme) => `${Number(theme.shape.borderRadius) * 1.5}px`
+                }} />
+              ) : (
+                <Box
+                  key={String(idx)}
+                  sx={{
+                    minHeight: isMobile ? 100 : 140,          /* garante altura mínima do cabeçalho */
+                    textAlign: 'center',
+                    p: 1,
+                    cursor: 'pointer',
+                    border: '1px solid',
+                    borderColor: 'divider',
+                    borderRadius: 1,
+                    bgcolor: 'background.paper',
+                    overflow: 'hidden',
+                    display: 'flex',
+                    alignItems: 'center',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                  }}
+                  onClick={() => day && handleDayClick(day)}
+                  role="button"
+                  aria-label={day ? `Ver dia ${format(day, "d 'de' MMMM", { locale: ptBR })}` : undefined}
+                >
+                  <Typography variant="caption" sx={{ textTransform: 'uppercase', fontWeight: 600, color: day && isToday(day) ? 'primary.main' : 'text.secondary' }}>
+                    {day ? format(day, 'EEE', { locale: ptBR }) : ''}
+                  </Typography>
+                  <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                    {day ? format(day, 'd') : ''}
+                  </Typography>
+                  <Typography variant="caption" color="text.secondary">
+                    {day ? format(day, 'MMM', { locale: ptBR }) : ''}
+                  </Typography>
+                </Box>
+              )}
+            </Box>
+
+            {/* Time labels column (sticky) - render only for first column */}
+            {idx === 0 && slots.map((slot, rowIndex) => (
+              <Box key={rowIndex} sx={{
+                minHeight: isMobile ? 100 : 140,
+                border: '1px solid',
+                borderColor: 'divider',
+                borderRadius: 1,
+                bgcolor: 'background.paper',
+                overflow: 'hidden',
+                display: 'flex',
+                alignItems: 'center',
+                flexDirection: 'column',
+                justifyContent: 'center',
+              }}>
+                <Typography variant="caption" color="text.secondary">
+                  {format(slot, 'HH:mm')}
+                </Typography>
+              </Box>
+            ))}
+
+            {idx !== 0 && slots.map((slot, rowIndex) => {
               const slotLabel = format(slot, 'HH:mm');
-              const dayAppointments = getAppointmentsForDay(day).filter((a) => a.time === slotLabel);
+              const dayAppointments = getAppointmentsForDay(day ? day : null).filter((a) => a.time === slotLabel);
 
               // zebra background for empty slots
               const isEven = rowIndex % 2 === 0;
@@ -175,9 +239,9 @@ export const WeekView: React.FC = () => {
 
               return (
                 <Box
-                  key={`${day.toISOString()}-${slotLabel}`}
+                  key={`${day ? day.toISOString() : ''}-${slotLabel}`}
                   sx={{
-                    minHeight: isMobile ? 56 : 72,
+                    minHeight: isMobile ? 100 : 140,
                     border: '1px solid',
                     borderColor: 'divider',
                     borderRadius: 1,
@@ -190,21 +254,33 @@ export const WeekView: React.FC = () => {
                     gap: 0.25,
                   }}
                 >
-                  {dayAppointments.slice(0, 3).map((app) => (
-                    <Box key={app.id} sx={{ mb: 0.25, cursor: 'pointer' }} onClick={() => openDetails(app)}>
-                      <Typography variant="body2" noWrap sx={{ fontWeight: 600 }}>
-                        {app.time} — {app.client}
-                      </Typography>
-                      <Typography variant="caption" color="text.secondary" noWrap>
-                        {app.service}
-                      </Typography>
-                    </Box>
+                  {/* show up to 3 appointments as horizontal items (side-by-side) */}
+                  {dayAppointments.slice(0, inlineCount).map((app) => (
+                    <Chip
+                      key={app.id}
+                      label={`${app.time} — ${app.client}`}
+                      onClick={() => openDetails(app)}
+                      size={isMobile ? 'small' : 'medium'}
+                      variant="outlined"
+                      sx={{
+                        maxWidth: '100%',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        borderColor: getStatusMainColor(app.status),
+                        color: getStatusMainColor(app.status),
+                        backgroundColor: (theme) => theme.palette.background.default,
+                      }}
+                    />
                   ))}
 
-                  {dayAppointments.length > 3 && (
-                    <Typography variant="caption" color="text.secondary">
-                      +{dayAppointments.length - 3} outros
-                    </Typography>
+                  {/* if more than inlineCount, show a compact button to open a dialog listing all */}
+                  {dayAppointments.length > inlineCount && (
+                    <Box sx={{ mt: 0.25 }}>
+                      <Button size="small" onClick={() => openSlotDialog(day ? day : null, slotLabel, dayAppointments)}>
+                        Ver +{dayAppointments.length - inlineCount}
+                      </Button>
+                    </Box>
                   )}
                 </Box>
               );
@@ -231,6 +307,26 @@ export const WeekView: React.FC = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={closeDetails}>Fechar</Button>
+        </DialogActions>
+      </Dialog>
+      {/* Slot appointments dialog */}
+      <Dialog open={slotDialogOpen} onClose={closeSlotDialog} fullWidth maxWidth="sm">
+        <DialogTitle>{slotDialogTitle}</DialogTitle>
+        <DialogContent dividers>
+          {slotDialogAppointments && (
+            <List>
+              {slotDialogAppointments.map((app) => (
+                <ListItem key={app.id} alignItems="flex-start" sx={{ p: 0 }}>
+                  <ListItemButton onClick={() => openDetails(app)}>
+                    <ListItemText primary={`${app.time} — ${app.client}`} secondary={app.service} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={closeSlotDialog}>Fechar</Button>
         </DialogActions>
       </Dialog>
     </Box>
