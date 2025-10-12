@@ -144,15 +144,10 @@ export const WeekView: React.FC = () => {
               sx={{
                 display: 'grid',
                 alignItems: 'center',
-                gap: 1,
-                pb: 1,
                 position: 'sticky',
                 top: 0,
                 zIndex: (theme) => (theme.zIndex.appBar || 1200) + 2,
-                borderBottom: '1px solid',
-                borderColor: 'divider',
                 overflow: 'hidden',
-                boxShadow: (theme) => theme.shadows?.[1] || 'none',
               }}
             >
               <Box sx={{
@@ -171,8 +166,8 @@ export const WeekView: React.FC = () => {
                   minHeight: isMobile ? 100 : 140,           /* garante altura mínima do cabeçalho */
                   zIndex: (theme) => (theme.zIndex.appBar || 1200) + 1,
                   backgroundColor: 'background.paper',
+                  border: '1px solid',
                   borderColor: 'divider',
-                  borderTopLeftRadius: (theme) => `${Number(theme.shape.borderRadius) * 1.5}px`
                 }} />
               ) : (
                 <Box
@@ -184,7 +179,6 @@ export const WeekView: React.FC = () => {
                     cursor: 'pointer',
                     border: '1px solid',
                     borderColor: 'divider',
-                    borderRadius: 1,
                     bgcolor: 'background.paper',
                     overflow: 'hidden',
                     display: 'flex',
@@ -215,7 +209,6 @@ export const WeekView: React.FC = () => {
                 minHeight: isMobile ? 100 : 140,
                 border: '1px solid',
                 borderColor: 'divider',
-                borderRadius: 1,
                 bgcolor: 'background.paper',
                 overflow: 'hidden',
                 display: 'flex',
